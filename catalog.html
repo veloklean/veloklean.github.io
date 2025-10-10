@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloKlean | Service Catalog & Pricing</title>
+    <link rel="stylesheet" href="cate.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <header id="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-tint"></i> VeloKlean
+        </a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/">About</a>
+            <a href="#" class="active">Services</a>
+            <a href="/">Reviews</a>
+            <a href="/">Contact</a>
+        </nav>
+        <a href="#" class="cta-button primary-cta open-quote-modal">Get a Quote</a>
+    </header>
+
+    <section id="catalog" class="catalog-section">
+        <div class="catalog-header">
+            <h1 data-aos="fade-up">Choose the Perfect Cleaning Plan for Your Space</h1>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Transparent pricing. Professional cleaners. Smarter booking.</p>
+        </div>
+
+        <div class="catalog-container">
+            <div id="navigation-controls" class="navigation-controls hidden">
+                <button id="back-button" class="btn-back"><i class="fas fa-arrow-left"></i> Back</button>
+            </div>
+
+            <div id="step-categories" class="catalog-view active-view" data-aos="fade-in">
+                <div class="category-grid">
+                    <div class="service-card" data-category="house">
+                        <i class="fas fa-home service-icon"></i>
+                        <h3>House Cleaning</h3>
+                        <p>Detailed cleaning for residential properties. Perfect for homes and apartments.</p>
+                        <button class="btn-packages">View Packages</button>
+                    </div>
+                    <div class="service-card" data-category="commercial">
+                        <i class="fas fa-building service-icon"></i>
+                        <h3>Office / Commercial Cleaning</h3>
+                        <p>Ensure a pristine, hygienic, and professional workspace for your employees and clients.</p>
+                        <button class="btn-packages">View Packages</button>
+                    </div>
+                    <div class="service-card" data-category="carpet">
+                        <i class="fas fa-couch service-icon"></i>
+                        <h3>Carpet & Upholstery Cleaning</h3>
+                        <p>Advanced steam and dry cleaning techniques to refresh fabrics and remove deep stains.</p>
+                        <button class="btn-packages">View Packages</button>
+                    </div>
+                    <div class="service-card" data-category="move">
+                        <i class="fas fa-box-open service-icon"></i>
+                        <h3>Move In / Move Out Cleaning</h3>
+                        <p>Comprehensive service for landlords, renters, and buyers making a transition.</p>
+                        <button class="btn-packages">View Packages</button>
+                    </div>
+                    <div class="service-card" data-category="post-construction">
+                        <i class="fas fa-hard-hat service-icon"></i>
+                        <h3>Post Construction Cleaning</h3>
+                        <p>Thorough removal of dust and debris after renovation or new build projects.</p>
+                        <button class="btn-packages">View Packages</button>
+                    </div>
+                    <div class="service-card" data-category="retail">
+                        <i class="fas fa-utensils service-icon"></i>
+                        <h3>Restaurant & Retail Cleaning</h3>
+                        <p>Specialized sanitization and deep cleaning for high-traffic food and sales environments.</p>
+                        <button class="btn-packages">View Packages</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step-subservices" class="catalog-view">
+                </div>
+
+            <div id="step-packages" class="catalog-view">
+                </div>
+        </div>
+    </section>
+
+    <div id="floating-cta" class="floating-cta">
+        <p>Ready to book your cleaning?</p>
+        <button class="cta-button primary-cta open-quote-modal">Get a Quote</button>
+    </div>
+
+    <div id="quote-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Request a Quote</h2>
+            <p id="form-subtitle">Tell us a bit about your needs, and we'll get back to you immediately.</p>
+
+                        <div id="modal-submission-loader" class="hidden">
+                <div class="loader-spinner"></div>
+                <p>Submitting request...</p>
+            </div>
+                        
+            <form id="modal-quote-form" name="submit-to-google-sheet-catalog">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <input type="text" name="city" placeholder="City" required>
+                <input type="text" id="selected-service-input" name="service" readonly placeholder="Selected Service" value="">
+                <button type="submit" id="modal-submit-btn" class="cta-button submit-btn">Submit Request</button>
+            </form>
+
+                        <div id="modal-success-message" class="hidden">
+                <i class="fas fa-check-circle success-icon"></i>
+                <p>Success! Your quote request has been sent to VeloKlean. We'll be in touch soon.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+    </script>
+    <script src="cate.js"></script>
+</body>
+</html>
