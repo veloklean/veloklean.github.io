@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veloklean | Cleaner Job Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hidden { display: none !important; }
+    #jobList::-webkit-scrollbar { width: 8px; }
+    #jobList::-webkit-scrollbar-thumb { background-color: #38bdf8; border-radius: 4px; }
+    #jobList::-webkit-scrollbar-track { background-color: #e2e8f0; }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans p-4 sm:p-8">
+  <div id="messageModal" class="hidden fixed top-0 left-0 right-0 p-4 text-white text-center shadow-lg z-50 transition duration-300 ease-in-out">
+    <span id="modalText" class="font-semibold"></span>
+    <button id="modalCloseBtn" class="float-right text-lg font-bold ml-4">×</button>
+  </div>
+
+  <div class="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-2xl border-t-8 border-sky-500 relative">
+    <header class="mb-6">
+      <h1 class="text-3xl font-extrabold text-gray-800 text-center">Cleaner Job Portal</h1>
+      <p class="text-center text-gray-500">View and update your assigned cleaning jobs.</p>
+    </header>
+
+    <div id="loadingOverlay" class="hidden absolute inset-0 bg-white bg-opacity-80 flex items-center justify-center rounded-2xl">
+      <div class="animate-spin inline-block w-8 h-8 border-4 border-sky-500 border-t-transparent rounded-full"></div>
+    </div>
+
+    <!-- Search Section -->
+    <div id="searchSection">
+      <h2 class="text-xl font-semibold mb-3">Enter Your Assigned Email</h2>
+      <form onsubmit="fetchJobs(event)" class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
+        <input type="email" id="cleanerEmail" placeholder="e.g. cleaner_name@company.com" required
+          class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500">
+        <button type="submit"
+          class="p-3 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 transition duration-150 shadow-md">
+          Find Jobs
+        </button>
+      </form>
+    </div>
+
+    <!-- Job Section -->
+    <div id="jobContainer" class="hidden">
+      <p class="mb-4 text-sm text-gray-600">
+        Jobs assigned to:
+        <span id="displayEmail" class="font-mono bg-sky-100 px-2 py-0.5 rounded text-sky-700"></span>
+      </p>
+      <div id="jobList" class="max-h-[60vh] overflow-y-auto pr-2"></div>
+      <button onclick="fetchJobs()" class="w-full mt-4 py-2 text-sm text-gray-600 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 transition">
+        Refresh Job List
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const CLEANER_API_URL = "https://script.google.com/macros/s/AKfycbx0dx6k-xNnJetGtq38ZYiQpud6G8BsqAeev59YgHYllWKCtj0JOVcwE1meIO3Ensnp/exec";
+
+    const messageModal = document.getElementById('messageModal');
+    const modalText = document.getElementById('modalText');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    modalCloseBtn.addEventListener('click', () => messageModal.classList.add('hidden'));
+
+    function showMessage(text, isError = false) {
+      modalText.textContent = text;
+      messageModal.classList.remove('hidden');
+      messageModal.classList.add(isError ? 'bg-red-500' : 'bg-green-500');
+      setTimeout(() => messageModal.classList.add('hidden'), 6000);
+    }
+
+    let cleanerEmail = '';
+    const emailInput = document.getElementById('cleanerEmail');
+    const jobListElement = document.getElementById('jobList');
+    const jobContainer = document.getElementById('jobContainer');
+    const searchSection = document.getElementById('searchSection');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+
+    async function fetchJobs(e) {
+      if (e) e.preventDefault();
+      cleanerEmail = emailInput.value.trim();
+      if (!cleanerEmail) return showMessage("Please enter your email.", true);
+
+      loadingOverlay.classList.remove('hidden');
+      jobListElement.innerHTML = '';
+      try {
+        const res = await fetch(`${CLEANER_API_URL}?action=getJobs&email=${encodeURIComponent(cleanerEmail)}`);
+        const data = await res.json();
+
+        if (data.error) throw new Error(data.error);
+        if (data.jobs && data.jobs.length) {
+          searchSection.classList.add('hidden');
+          jobContainer.classList.remove('hidden');
+          document.getElementById('displayEmail').textContent = cleanerEmail;
+          data.jobs.forEach((job, i) => jobListElement.appendChild(createJobCard(job, i)));
+          showMessage(`${data.jobs.length} assigned jobs loaded!`);
+        } else showMessage("No assigned jobs found.", false);
+      } catch (err) {
+        showMessage("Failed to load jobs: " + err.message, true);
+      } finally {
+        loadingOverlay.classList.add('hidden');
+      }
+    }
+
+    function createJobCard(job, i) {
+      const card = document.createElement('div');
+      card.className = 'bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500 mb-6';
+      const formId = `jobForm_${i}`;
+      card.innerHTML = `
+        <form id="${formId}" data-row-index="${job.rowIndex}">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">${job.service} (${job.city})</h3>
+          <div class="space-y-1 mb-4 text-sm text-gray-700">
+            <p><strong>Date:</strong> ${job.date}</p>
+            <p><strong>Address:</strong> ${job.address}</p>
+            <p><strong>Client:</strong> ${job.client_name}</p>
+            <p><strong>Rep:</strong> ${job.rep_name}</p>
+          </div>
+          <input type="hidden" name="action" value="updateStatus">
+          <input type="hidden" name="rowIndex" value="${job.rowIndex}">
+          <input type="hidden" name="newStatus" value="Job Done">
+          <input type="hidden" name="client_name" value="${job.client_name}">
+          <button type="submit"
+            class="mt-4 w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-150 shadow-md">
+            Mark Job Done
+          </button>
+        </form>
+      `;
+      card.querySelector(`#${formId}`).addEventListener('submit', handleJobDone);
+      return card;
+    }
+
+    async function handleJobDone(e) {
+      e.preventDefault();
+      const form = e.target;
+      const button = form.querySelector('button');
+      button.disabled = true;
+      button.textContent = 'Updating...';
+      loadingOverlay.classList.remove('hidden');
+      try {
+        const res = await fetch(CLEANER_API_URL, { method: 'POST', body: new FormData(form) });
+        const data = await res.json();
+        if (data.result === 'success') {
+          showMessage('Job marked as done successfully!');
+          setTimeout(() => form.closest('.bg-white').remove(), 1500);
+        } else throw new Error(data.error || 'Failed to update.');
+      } catch (err) {
+        showMessage('Error: ' + err.message, true);
+      } finally {
+        button.textContent = 'Mark Job Done';
+        button.disabled = false;
+        loadingOverlay.classList.add('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
