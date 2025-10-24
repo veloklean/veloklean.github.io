@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Veloklean — Privacy Policy</title>
+<meta name="description" content="Veloklean Privacy Policy — how we collect, use and protect data for Customers, Cleaners and Representatives." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#041224;
+    --card:#071726;
+    --muted:#9aa4b2;
+    --accent:#00bfa6;
+    --glass: rgba(255,255,255,0.03);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    background: linear-gradient(180deg,#031622 0%, #061927 60%, #07142a 100%);
+    color:#e6eef6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding:48px 20px;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+  }
+
+  .container{
+    width:100%;
+    max-width:1000px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:16px;
+    box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    overflow:hidden;
+    border: 1px solid rgba(255,255,255,0.03);
+    animation: float 700ms ease;
+  }
+
+  @keyframes float { from { transform: translateY(8px); opacity:0 } to { transform: translateY(0); opacity:1 } }
+
+  header{
+    padding:24px 28px;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+  }
+  .logo {
+    width:56px;height:56px;border-radius:12px;
+    background: linear-gradient(135deg,var(--accent),#007f73);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;color:#022; font-size:20px;
+    box-shadow: 0 6px 16px rgba(0,191,166,0.10);
+  }
+  header h1{font-size:18px;margin:0}
+  header p{margin:0;color:var(--muted);font-size:13px}
+
+  .content{
+    display:grid;
+    grid-template-columns: 1fr 340px;
+    gap:26px;
+    padding:20px 28px 28px;
+  }
+
+  @media (max-width:920px){
+    .content{grid-template-columns:1fr; padding:18px}
+    header{padding:16px}
+  }
+
+  .main{
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    border-radius:12px;
+    padding:18px;
+    min-height:460px;
+  }
+
+  .intro{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+  .intro .badge{background:rgba(0,191,166,0.06);color:var(--accent);padding:6px 10px;border-radius:8px;font-weight:600;font-size:13px}
+  .intro h2{margin:0;font-size:18px}
+  .intro p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+  .section{margin-top:12px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.02)}
+  .section .head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;cursor:pointer;background:linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.0));}
+  .head .left{display:flex;gap:10px;align-items:center}
+  .head h3{margin:0;font-size:15px}
+  .head p{margin:0;color:var(--muted);font-size:13px}
+  .chev{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,0.02);display:grid;place-items:center;transition:transform .25s ease}
+  .chev svg{width:16px;height:16px;fill:var(--muted)}
+
+  .body{padding:12px 16px 18px 16px;color:#d9e7f2;line-height:1.6;font-size:14px;max-height:0;overflow:hidden;transition:max-height .36s ease,padding .25s ease}
+  .body.open{ padding:14px 16px 18px 16px; max-height:1200px }
+
+  ul{padding-left:18px;margin:8px 0}
+  li{margin:6px 0;color:var(--muted)}
+
+  .side{position:relative;background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border-radius:12px;padding:18px;min-height:460px;border:1px solid rgba(255,255,255,0.02);}
+  .side h4{margin:0 0 8px 0}
+  .key{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);margin-bottom:10px}
+  .key strong{display:block}
+  .accept{margin-top:18px;display:flex;gap:10px;align-items:center;flex-direction:column}
+  .btn{background:var(--accent);color:#022;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer;width:100%;box-shadow: 0 8px 18px rgba(0,191,166,0.12);transition:transform .14s ease}
+  .btn:hover{transform:translateY(-3px)}
+  .linkish{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:10px 12px;border-radius:10px;color:var(--muted);width:100%;text-align:left;cursor:pointer}
+  .muted{color:var(--muted);font-size:13px}
+  .tiny{font-size:13px;color:var(--muted)}
+
+  footer{padding:14px 20px;border-top:1px solid rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+  <div class="container" role="main" aria-labelledby="pp-title">
+    <header>
+      <div class="logo" aria-hidden>V</div>
+      <div>
+        <h1 id="pp-title">Veloklean — Privacy Policy</h1>
+        <p class="tiny">How we collect, use, and protect data for Customers, Cleaners & Representatives.</p>
+      </div>
+    </header>
+
+    <div class="content">
+      <main class="main" aria-label="Privacy content">
+        <div class="intro">
+          <div><div class="badge">Privacy</div></div>
+          <div>
+            <h2>We respect your privacy</h2>
+            <p class="muted">This policy explains what personal data we collect, why, how we use it, and your rights. Applies to Customers, Cleaners, and Reps engaging with Veloklean.</p>
+          </div>
+        </div>
+
+        <!-- 1. Data we collect -->
+        <section class="section">
+          <div class="head" data-target="body-collect">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">1</div>
+              <div><h3>Data We Collect</h3><p class="tiny">Types of personal & non-personal data</p></div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-collect" class="body">
+            <p>We collect data necessary to provide services, communicate, and comply with legal obligations. This includes:</p>
+            <ul>
+              <li><strong>Customers:</strong> name, phone, email, address, booking details, payment tokens (via payment gateway), feedback and photos provided for service disputes.</li>
+              <li><strong>Cleaners:</strong> name, contact, banking/payment details, ID/verification documents, availability, service records, background-check results (if applicable).</li>
+              <li><strong>Representatives (Reps):</strong> name, contact, work history, communications records, performance data and timesheets.</li>
+              <li><strong>Technical & Usage Data:</strong> IP addresses, device/browser info, pages visited, ad interaction, cookies and analytics data.</li>
+              <li><strong>Third-Party Data:</strong> data received from partners (e.g., payment processors, background-check providers) necessary to deliver services.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 2. How we use data -->
+        <section class="section">
+          <div class="head" data-target="body-use">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">2</div>
+              <div><h3>How We Use Your Data</h3><p class="tiny">Purpose & lawful basis</p></div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-use" class="body">
+            <ul>
+              <li><strong>Service Delivery:</strong> to schedule, assign, and perform cleanings; share relevant contact and job details with assigned cleaners and reps.</li>
+              <li><strong>Payments & Billing:</strong> to process payments, issue invoices, reconcile payouts, and prevent fraud via trusted payment processors.</li>
+              <li><strong>Communications:</strong> to send booking confirmations, reminders, receipts, support messages and service updates (email, SMS, WhatsApp).</li>
+              <li><strong>Quality & Safety:</strong> to verify cleaner eligibility, perform background checks if required, and investigate incidents or complaints.</li>
+              <li><strong>Marketing:</strong> to send service offers and updates to customers who opt-in. You can opt-out anytime.</li>
+              <li><strong>Legal & Compliance:</strong> to comply with laws, respond to legal requests, and protect our rights and users.</li>
+            </ul>
+            <p class="muted">We only use personal data for the purpose it was collected or where consent or a legal basis exists.</p>
+          </div>
+        </section>
+
+        <!-- 3. Sharing & third parties -->
+        <section class="section">
+          <div class="head" data-target="body-share">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">3</div>
+              <div><h3>Sharing & Third Parties</h3><p class="tiny">Who we may share data with</p></div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-share" class="body">
+            <ul>
+              <li><strong>Assigned Cleaners & Reps:</strong> receive only job-relevant data (client name, address, phone, service details).</li>
+              <li><strong>Payment Processors:</strong> (Stripe, PayPal, Instamojo or equivalents) to securely process payments; we do not store full card details on our servers.</li>
+              <li><strong>Background Check Providers:</strong> when required for cleaner onboarding (with explicit consent).</li>
+              <li><strong>Analytics & Ads Partners:</strong> (Meta, Google) to analyze ad performance and improve service delivery—data is shared per provider policies.</li>
+              <li><strong>Legal & Compliance:</strong> when required by law, court order or to protect our rights or users.</li>
+            </ul>
+            <p class="muted">We require third parties to follow industry-standard security practices and prohibit unauthorized reuse of personal data.</p>
+          </div>
+        </section>
+
+        <!-- 4. Cookies & tracking -->
+        <section class="section">
+          <div class="head" data-target="body-cookies">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">4</div>
+              <div><h3>Cookies & Tracking</h3><p class="tiny">How we use cookies & similar tech</p></div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-cookies" class="body">
+            <p>We use cookies and similar technologies to operate our site, analyze usage, show personalized ads, and improve user experience. You can control cookie preferences via your browser settings. For ad opt-outs, visit your ad platform settings (Google, Meta).</p>
+          </div>
+        </section>
+
+        <!-- 5. Data retention -->
+        <section class="section">
+          <div class="head" data-target="body-retain">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">5</div>
+              <div><h3>Data Retention</h3><p class="tiny">How long we keep data</p></div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-retain" class="body">
+            <p>We retain personal data as long as necessary to provide services, comply with legal obligations, and for legitimate business purposes. Typical retention periods:</p>
+            <ul>
+              <li>Booking records & invoices: retained for 7 years for accounting and tax purposes.</li>
+              <li>Cleaner onboarding records: retained while active and for a reasonable period after offboarding.</li>
+              <li>Marketing consents: until you opt-out or withdraw consent.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 6. Security -->
+        <section class="section">
+          <div class="head" data-target="body-security">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">6</div>
+              <div><h3>Security</h3><p class="tiny">How we protect your data</p></div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-security" class="body">
+            <p>We implement reasonable administrative, technical, and physical safeguards to protect personal data. Examples include encrypted connections (HTTPS), restricted access, and secure cloud storage. However no system is 100% secure—report any suspected breach immediately to <strong>team@veloklean.services</strong>.</p>
+          </div>
+        </section>
+
+        <!-- 7. Your rights -->
+        <section class="section">
+          <div class="head" data-target="body-rights">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">7</div>
+              <div><h3>Your Rights</h3><p class="tiny">Access, correction, deletion & objections</p></div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-rights" class="body">
+            <ul>
+              <li><strong>Access:</strong> You can request a copy of the personal data we hold about you.</li>
+              <li><strong>Correction:</strong> Ask us to correct inaccurate or incomplete data.</li>
+              <li><strong>Deletion:</strong> Request deletion where we have no legal obligation to retain it (subject to verification).</li>
+              <li><strong>Objection & Restriction:</strong> You can object to certain processing (e.g., direct marketing).</li>
+            </ul>
+            <p class="muted">To exercise these rights, contact <strong>team@veloklean.ca</strong>. We may need to verify identity before fulfilling requests.</p>
+          </div>
+        </section>
+
+        <!-- 8. International transfers -->
+        <section class="section">
+          <div class="head" data-target="body-international">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">8</div>
+              <div><h3>International Transfers</h3><p class="tiny">If data moves across borders</p></div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-international" class="body">
+            <p>Veloklean may transfer data to service providers and partners located outside your country (for example, payment processors or hosting providers). We take steps to ensure adequate protection, such as standard contractual clauses or relying on processors with strong security standards.</p>
+          </div>
+        </section>
+
+        <!-- 9. Changes to policy -->
+        <section class="section">
+          <div class="head" data-target="body-changes">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">9</div>
+              <div><h3>Changes to this Policy</h3><p class="tiny">How we notify updates</p></div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-changes" class="body">
+            <p>We may update this Privacy Policy from time to time. We will note the “Last updated” date below and notify active users of material changes by email when required.</p>
+          </div>
+        </section>
+
+        <!-- 10. Contact -->
+        <section class="section">
+          <div class="head" data-target="body-contact">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">10</div>
+              <div><h3>Contact & Data Requests</h3><p class="tiny">How to reach us</p></div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-contact" class="body">
+            <p>For questions, access requests, or privacy concerns contact:</p>
+            <p><strong>Email:</strong> <a href="mailto:team@veloklean.ca" style="color:var(--accent);text-decoration:none">team@veloklean.ca</a></p>
+            <p class="muted">We aim to respond within 5 business days.</p>
+          </div>
+        </section>
+
+      </main>
+
+      <aside class="side" aria-label="Sidebar actions">
+        <h4>Quick Privacy Actions</h4>
+
+        <div class="key"><div style="width:10px;height:10px;border-radius:3px;background:var(--accent)"></div>
+          <div><strong>Company</strong><div class="muted">Veloklean</div></div>
+        </div>
+
+        <div class="key"><div class="pill">Data Controller</div>
+          <div><strong>Veloklean</strong><div class="muted">team@veloklean.ca</div></div>
+        </div>
+
+        <div style="margin-top:8px"><button id="downloadBtn" class="linkish">Download / Print</button></div>
+
+        <div class="accept">
+          <button id="ackBtn" class="btn">I Acknowledge Privacy Policy</button>
+          <div id="ackNote" class="muted" style="display:none;margin-top:8px">Acknowledgment saved locally.</div>
+          <div style="width:100%;margin-top:12px"><small class="muted">Acknowledging does not waive rights. For legal requests contact our team.</small></div>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      <div>© <strong>Veloklean</strong></div>
+      <div class="muted">Last updated: <span id="updatedDate"></span></div>
+    </footer>
+  </div>
+
+<script>
+  // set date
+  document.getElementById('updatedDate').textContent = new Date().toLocaleDateString();
+
+  // accordion toggles
+  document.querySelectorAll('.section .head').forEach(head=>{
+    head.addEventListener('click', ()=>{
+      const id = head.getAttribute('data-target');
+      const body = document.getElementById(id.replace(/^#/,'')) || document.getElementById(id);
+      if(!body) return;
+      const open = body.classList.toggle('open');
+      const chev = head.querySelector('.chev');
+      chev.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+      if(open && window.innerWidth < 920) setTimeout(()=> body.scrollIntoView({behavior:'smooth', block:'center'}), 200);
+    });
+  });
+
+  // open first
+  setTimeout(()=>{ const f = document.querySelector('.section .head'); if(f) f.click(); },120);
+
+  // download / print
+  document.getElementById('downloadBtn').addEventListener('click', ()=> window.print());
+
+  // acknowledge
+  document.getElementById('ackBtn').addEventListener('click', ()=>{
+    localStorage.setItem('veloklean_privacy_ack', new Date().toISOString());
+    document.getElementById('ackNote').style.display = 'block';
+    const b = document.getElementById('ackBtn');
+    b.disabled = true; b.textContent = 'Acknowledged ✓';
+  });
+</script>
+</body>
+</html>

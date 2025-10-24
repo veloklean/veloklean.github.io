@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Veloklean — Terms of Service</title>
+<meta name="description" content="Veloklean Terms of Service for Customers, Cleaners and Representatives." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#9aa4b2;
+    --accent:#00bfa6;
+    --glass: rgba(255,255,255,0.04);
+    --glass-2: rgba(255,255,255,0.03);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    background: linear-gradient(180deg,#041021 0%, #071428 40%, #081126 100%);
+    color:#e6eef6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding:48px 20px;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+  }
+
+  .container{
+    width:100%;
+    max-width:1000px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:16px;
+    box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    overflow:hidden;
+    border: 1px solid rgba(255,255,255,0.03);
+    animation: float 800ms ease;
+  }
+
+  @keyframes float { from { transform: translateY(8px); opacity:0 } to { transform: translateY(0); opacity:1 } }
+
+  header{
+    padding:28px 32px;
+    display:flex;
+    gap:20px;
+    align-items:center;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+  }
+  .logo {
+    width:60px;height:60px;border-radius:12px;
+    background: linear-gradient(135deg,var(--accent),#007f73);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;color:#022; font-size:20px;
+    box-shadow: 0 6px 18px rgba(0,191,166,0.12), inset 0 -6px 16px rgba(255,255,255,0.06);
+  }
+  header h1{font-size:20px;margin:0}
+  header p{margin:0;color:var(--muted);font-size:13px}
+
+  .content{
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:28px;
+    padding:28px 32px;
+  }
+
+  @media (max-width:920px){
+    .content{grid-template-columns:1fr; padding:20px}
+    header{padding:20px}
+  }
+
+  /* Main card */
+  .main{
+    background: linear-gradient(180deg,var(--glass), var(--glass-2));
+    border-radius:12px;
+    padding:20px;
+    min-height:420px;
+  }
+  .intro{
+    display:flex;align-items:flex-start;gap:16px;margin-bottom:12px;
+  }
+  .intro .badge{background:rgba(0,191,166,0.08);color:var(--accent);padding:6px 10px;border-radius:8px;font-weight:600;font-size:13px}
+  .intro h2{margin:0;font-size:18px}
+  .intro p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+  /* accordion sections */
+  .section{
+    margin-top:12px;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.02);
+  }
+  .section .head{
+    display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  }
+  .head .left{display:flex;gap:12px;align-items:center}
+  .head h3{margin:0;font-size:15px}
+  .head p{margin:0;color:var(--muted);font-size:13px}
+  .chev{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,0.02);display:grid;place-items:center;transition:transform .25s ease}
+  .chev svg{width:16px;height:16px;fill:var(--muted)}
+
+  .body{
+    padding:12px 16px 18px 16px;
+    color: #d9e7f2;
+    line-height:1.5;
+    font-size:14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.01));
+    max-height:0; overflow:hidden; transition:max-height .36s ease, padding .25s ease;
+  }
+  .body.open{ padding:14px 16px 18px 16px; max-height:1200px }
+
+  ul{padding-left:18px;margin:8px 0}
+  li{margin:6px 0;color:var(--muted)}
+
+  /* sidebar */
+  .side{
+    position:relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    border-radius:12px;padding:18px;min-height:420px;border:1px solid rgba(255,255,255,0.02);
+  }
+  .side h4{margin:0 0 8px 0}
+  .key{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);margin-bottom:10px}
+  .key strong{display:block}
+  .accept{
+    margin-top:18px;display:flex;gap:10px;align-items:center;flex-direction:column;
+  }
+  .btn{
+    background:var(--accent);color:#022;border:none;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer;width:100%;
+    box-shadow: 0 8px 18px rgba(0,191,166,0.12);
+    transition:transform .14s ease;
+  }
+  .btn:hover{transform:translateY(-3px)}
+  .linkish{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:10px 12px;border-radius:10px;color:var(--muted);width:100%;text-align:left;cursor:pointer}
+  .small{font-size:13px;color:var(--muted)}
+
+  footer{
+    padding:16px 28px;border-top:1px solid rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between;color:var(--muted);
+    font-size:13px;
+  }
+
+  /* tiny helpers */
+  .muted{color:var(--muted);font-size:13px}
+  .pill{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:600;font-size:13px}
+</style>
+</head>
+<body>
+  <div class="container" role="main" aria-labelledby="tos-title">
+    <header>
+      <div class="logo" aria-hidden>V</div>
+      <div>
+        <h1 id="tos-title">Veloklean — Terms of Service</h1>
+        <p>Terms for Customers · Cleaners · Representatives — Transparent, simple, fair.</p>
+      </div>
+    </header>
+
+    <div class="content">
+      <main class="main" aria-label="Terms content">
+        <div class="intro">
+          <div>
+            <div class="badge">Terms</div>
+          </div>
+          <div>
+            <h2>Welcome to Veloklean</h2>
+            <p class="muted">Please read these terms carefully. They explain the rights and responsibilities of customers, cleaners, and representatives when working with Veloklean.</p>
+          </div>
+        </div>
+
+        <!-- Customer section -->
+        <section class="section">
+          <div class="head" data-target="body-customer">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">C</div>
+              <div>
+                <h3>Customers — Service Terms</h3>
+                <p class="small">Bookings, payments, cancellations, expectations</p>
+              </div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-customer" class="body">
+            <p><strong>Service & Bookings:</strong> Veloklean provides cleaning services as described at booking time. Customers must provide accurate address and access details. Bookings are confirmed once payment is processed (or deposit received) and a confirmation is shared.</p>
+
+            <ul>
+              <li><strong>Payment:</strong> Customers pay using the methods provided (Stripe, PayPal, Instamojo or agreed gateway). Payment policies are shown at checkout.</li>
+              <li><strong>Cancellation & Rescheduling:</strong> Cancelations within 24 hours may incur a fee. Rescheduling is allowed with 24+ hours notice. Fees are listed in your booking confirmation.</li>
+              <li><strong>Service Guarantee:</strong> If a customer is unsatisfied, please notify Veloklean within 24 hours for a resolution — re-clean or credit may be provided after review.</li>
+              <li><strong>No-show & Access:</strong> If access is denied at the scheduled time, additional charges may apply for return visits.</li>
+            </ul>
+
+            <p class="muted"><strong>Note:</strong> Veloklean is a service provider and coordinates cleaners. Cleaners are independent contractors unless otherwise agreed.</p>
+          </div>
+        </section>
+
+        <!-- Cleaner section -->
+        <section class="section">
+          <div class="head" data-target="body-cleaner">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">CL</div>
+              <div>
+                <h3>Cleaners — Engagement Terms</h3>
+                <p class="small">Status, pay, standards, confidentiality</p>
+              </div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-cleaner" class="body">
+            <p><strong>Independent Contractor:</strong> Cleaners engaged by Veloklean act as independent contractors. Cleaners are responsible for their own taxes, insurance (if applicable), equipment and transport unless otherwise agreed.</p>
+
+            <ul>
+              <li><strong>Compensation:</strong> Cleaners receive a stated percentage of the service fee (for example, 55%). Payout schedules are weekly or as agreed and subject to reconciliation with completed jobs and client confirmation.</li>
+              <li><strong>Standards:</strong> Cleaners must follow Veloklean's quality checklist. Repeated service failures or client complaints may lead to suspension.</li>
+              <li><strong>Scheduling & Assignment:</strong> Jobs are assigned automatically by the Veloklean system based on location, availability, and daily capacity. Cleaners must confirm assignments and arrive on time.</li>
+              <li><strong>Equipment & Safety:</strong> Cleaners must use the agreed cleaning supplies and follow safety procedures. For specialized sites (clinics, restaurants) additional PPE or training may be required.</li>
+              <li><strong>Confidentiality & Client Data:</strong> Cleaners must not share client contact details outside of Veloklean channels or solicit clients for direct work.</li>
+            </ul>
+
+            <p class="muted">Veloklean provides onboarding materials and may require identification and background checks depending on market rules.</p>
+          </div>
+        </section>
+
+        <!-- Representatives section -->
+        <section class="section">
+          <div class="head" data-target="body-rep">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(0,191,166,0.06);display:grid;place-items:center;font-weight:700;color:var(--accent)">R</div>
+              <div>
+                <h3>Representatives — Booking & Sales Terms</h3>
+                <p class="small">Role, pay, performance and data rules</p>
+              </div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-rep" class="body">
+            <p><strong>Role:</strong> Representatives (reps) contact leads, confirm bookings, send payment links, and update Veloklean systems with client details. Reps may work on a hybrid model (hourly + per booking incentive) as per agreement.</p>
+
+            <ul>
+              <li><strong>Compensation:</strong> Pay terms for reps are detailed in individual agreements (e.g., per-booking fee, hourly pay, performance bonuses). Payments are processed weekly after verification of completed bookings.</li>
+              <li><strong>Data Handling:</strong> Reps receive lead data for business purposes only. Reps must not reuse, resell or share lead lists externally. Any breach will lead to termination and potential legal action.</li>
+              <li><strong>Verification Process:</strong> Reps must collect and confirm client payment where required before assigning a cleaner. Veloklean may require photo proof, payment receipts, or post-service confirmations.</li>
+              <li><strong>Quality & Conduct:</strong> Reps must represent Veloklean professionally. Any misrepresentation or unauthorized promises may result in immediate termination.</li>
+            </ul>
+
+            <p class="muted">Reps are encouraged to use the Veloklean onboarding guide and scripts for consistent client experience.</p>
+          </div>
+        </section>
+
+        <!-- Other legal bits -->
+        <section class="section">
+          <div class="head" data-target="body-general">
+            <div class="left">
+              <div style="width:44px;height:44px;border-radius:8px;background:rgba(255,255,255,0.02);display:grid;place-items:center;font-weight:700;color:var(--muted)">•</div>
+              <div>
+                <h3>General Terms: Payment, Liability & Privacy</h3>
+                <p class="small">Important legal notes</p>
+              </div>
+            </div>
+            <div class="chev" aria-hidden><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></div>
+          </div>
+          <div id="body-general" class="body">
+            <p><strong>Payments & Fees:</strong> All prices shown are subject to applicable taxes. Veloklean may require deposits or prepayments for certain bookings. Refund policies are listed in customer receipts.</p>
+
+            <p><strong>Liability:</strong> Veloklean carries third-party liability insurance where applicable. Veloklean is not responsible for pre-existing damage. Claims must be reported within 24 hours and will be assessed case-by-case.</p>
+
+            <p><strong>Privacy:</strong> Veloklean collects contact and booking data to provide services. Personal data is handled according to our Privacy Policy. By using Veloklean services you consent to this collection and processing.</p>
+
+            <p><strong>Termination & Changes:</strong> Veloklean reserves the right to modify these terms with notice. Either party may terminate a contract per the agreed notice period.</p>
+          </div>
+        </section>
+
+      </main>
+
+      <aside class="side" aria-label="Sidebar actions">
+        <h4>Quick Info</h4>
+        <div class="key"><div style="width:10px;height:10px;border-radius:3px;background:var(--accent)"></div>
+          <div><strong>Company</strong><div class="muted">Veloklean</div></div>
+        </div>
+
+        <div class="key"><div class="pill">Support</div>
+          <div><strong>team@veloklean.services</strong><div class="muted">Reply within 24 hrs</div></div>
+        </div>
+
+        <div class="key"><div class="pill">Payment</div>
+          <div><strong>Weekly payouts</strong><div class="muted">Cleaners & Reps</div></div>
+        </div>
+
+        <div class="accept">
+          <button id="downloadBtn" class="linkish" title="Download PDF">Download Terms (PDF)</button>
+          <button id="acceptBtn" class="btn">I Accept These Terms</button>
+          <div id="acceptedNote" class="muted" style="display:none;margin-top:8px">Thanks — acceptance recorded locally.</div>
+          <div style="width:100%;margin-top:12px"><small class="muted">By accepting you agree to the Veloklean terms and policies. This is not a substitute for a signed contract where required.</small></div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div>© <strong>Veloklean</strong> — All rights reserved.</div>
+      <div class="muted">Last updated: <span id="updatedDate"></span></div>
+    </footer>
+  </div>
+
+<script>
+  // Initialize updated date
+  document.getElementById('updatedDate').textContent = new Date().toLocaleDateString();
+
+  // Accordion toggle
+  document.querySelectorAll('.section .head').forEach(head=>{
+    head.addEventListener('click', ()=>{
+      const targetId = head.getAttribute('data-target') || head.dataset.target;
+      const body = document.getElementById(targetId.replace(/^#/,'')) || document.getElementById(targetId);
+      if(!body) return;
+      const chev = head.querySelector('.chev');
+      const open = body.classList.toggle('open');
+      chev.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+      // smooth scroll into view for mobile
+      if(open && window.innerWidth < 920){
+        setTimeout(()=> body.scrollIntoView({behavior:'smooth', block:'center'}), 200);
+      }
+    });
+  });
+
+  // Accept terms - local record (could post to server)
+  const acceptBtn = document.getElementById('acceptBtn');
+  const acceptedNote = document.getElementById('acceptedNote');
+  acceptBtn.addEventListener('click', ()=>{
+    // simple local storage record
+    localStorage.setItem('veloklean_tos_accepted', new Date().toISOString());
+    acceptedNote.style.display = 'block';
+    acceptBtn.disabled = true;
+    acceptBtn.textContent = 'Accepted ✓';
+  });
+
+  // Download PDF (basic client-side approach using print)
+  document.getElementById('downloadBtn').addEventListener('click', ()=>{
+    // opens print preview as a way to generate PDF client-side
+    window.print();
+  });
+
+  // small accessibility: open first section by default
+  setTimeout(()=>{
+    const first = document.querySelector('.section .head');
+    if(first) first.click();
+  },100);
+
+</script>
+</body>
+</html>
