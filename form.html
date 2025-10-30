@@ -77,8 +77,11 @@ button:hover {
     <form id="quote-form" name="submit-to-google-sheet">
       <h2>Confirm Booking</h2>
       <input name="client_name" placeholder="Client Name" required />
+
       <input name="phone" placeholder="Client Phone" required />
+
       <input name="city" placeholder="City" required />
+
       <select name="service" id="service" required
     class="p-3 border border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500 w-full">
   <option value="" disabled selected>Select Service</option>
@@ -92,6 +95,7 @@ button:hover {
   <option value="Carpet & Upholstery Cleaning">Carpet & Upholstery Cleaning</option>
   <option value="Window Cleaning">Window Cleaning</option>
   <option value="Disinfection & Sanitization">Disinfection & Sanitization</option>
+  <option value="plumb">Plumbing</option>
 </select>
 
       <input type="date" name="date" required />
@@ -131,7 +135,7 @@ button:hover {
 
 </div> <script>
 // IMPORTANT: Replace this with the actual 'exec' URL of your Apps Script Web App!
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwteRBoCl47KiqWzSKOmMiXn2-P4R34UwGIGxZGP8wQaxrswWZkx7JbHzvN28WwDpB7/exec'; 
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxypJ0NrYrfkcCPVPN00bId7hFEvKQlnmsr3THAdOgqOKrtwsSCuTAVL0rd9tmQEwM/exec'; 
 
 // NOTE: These now correctly refer to elements in the HTML above
 const form = document.forms['submit-to-google-sheet'];
