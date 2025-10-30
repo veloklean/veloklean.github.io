@@ -1,0 +1,793 @@
+        <!-- JavaScript for Tab Functionality -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const tabBtns = document.querySelectorAll('.tab-btn');
+                const tabContents = document.querySelectorAll('.tab-content');
+                
+                tabBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        // Remove active class from all buttons and contents
+                        tabBtns.forEach(b => b.classList.remove('active', 'bg-blue-100', 'text-blue-600'));
+                        tabContents.forEach(c => c.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        this.classList.add('active', 'bg-blue-100', 'text-blue-600');
+                        
+                        // Show corresponding content
+                        const tabId = this.getAttribute('data-tab');
+                        document.getElementById(tabId).classList.add('active');
+                    });
+                });
+            });
+        </script>
+    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veloklen Cleaning Services | Service Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2b6cb0;
+            --secondary: #4299e1;
+            --accent: #38b2ac;
+            --light: #ebf8ff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7fafc;
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .badge {
+            top: -10px;
+            right: -10px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .addon-item {
+            transition: all 0.2s ease;
+        }
+        
+        .addon-item:hover {
+            background-color: rgba(66, 153, 225, 0.1);
+        }
+        
+        .modal {
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-broom text-3xl text-blue-600 mr-3"></i>
+                <h1 class="text-2xl font-bold text-gray-800">Veloklen<span class="text-blue-600">.</span></h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-600 hover:text-blue-600">Home</a>
+                <a href="#" class="text-blue-600 font-medium">Services</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">About Us</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">Contact</a>
+            </nav>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition">
+                Book Now
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4">Our Cleaning Services</h2>
+            <p class="text-xl max-w-2xl mx-auto mb-8">Professional, reliable, and eco-friendly cleaning solutions for your home in Canada</p>
+            <div class="flex justify-center space-x-4">
+                <button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+                    Get a Free Quote
+                </button>
+                <button class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
+                    Call Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Navigation Tabs -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-xl shadow-md p-4 mb-8">
+            <div class="flex flex-wrap gap-2 md:gap-0 md:space-x-2 overflow-x-auto pb-2">
+                <button class="tab-btn active px-4 py-2 rounded-lg font-medium bg-blue-100 text-blue-600" data-tab="standard">
+                    Standard Cleaning
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600" data-tab="deep">
+                    Deep Cleaning
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600" data-tab="move">
+                    Move In/Out
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600" data-tab="renovation">
+                    Post-Renovation
+                </button>
+                <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <ul class="space-y-2">
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-paw text-blue-500 mr-2"></i>
+                                    <span>Pet area cleaning</span>
+                                    <span class="ml-auto font-medium">+$35</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-utensils text-blue-500 mr-2"></i>
+                                    <span>Kitchen appliance clean</span>
+                                    <span class="ml-auto font-medium">+$50</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-umbrella-beach text-blue-500 mr-2"></i>
+                                    <span>Balcony cleaning</span>
+                                    <span class="ml-auto font-medium">+$40</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span>Weekly:</span>
+                                    <span class="font-bold">$399 (15% off)</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Bi-weekly:</span>
+                                    <span class="font-bold">$410 (10% off)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Monthly:</span>
+                                    <span class="font-bold">$420 (5% off)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post-Renovation Tab -->
+        <div id="renovation" class="tab-content">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">Post-Renovation Cleaning Services</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Small Unit -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Post-Renovation (Small Unit)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$550</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$499</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Removes dust, debris, glue marks, glass/mirror cleaning</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>7–8 hrs</span>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <ul class="space-y-2">
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-paw text-blue-500 mr-2"></i>
+                                    <span>Pet area cleaning</span>
+                                    <span class="ml-auto font-medium">+$50</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-broom text-blue-500 mr-2"></i>
+                                    <span>Kitchen/wall scrubbing</span>
+                                    <span class="ml-auto font-medium">+$60</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span>Weekly:</span>
+                                    <span class="font-bold">$450 (15% off)</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Bi-weekly:</span>
+                                    <span class="font-bold">$465 (10% off)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Monthly:</span>
+                                    <span class="font-bold">$480 (5% off)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Large Unit -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Post-Renovation (Large Unit)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$650</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$589</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Full clean after major reno, includes heavy dust removal, vents, fixtures</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>8–9 hrs</span>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <ul class="space-y-2">
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-paw text-blue-500 mr-2"></i>
+                                    <span>Pet area cleaning</span>
+                                    <span class="ml-auto font-medium">+$60</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-utensils text-blue-500 mr-2"></i>
+                                    <span>Heavy kitchen clean</span>
+                                    <span class="ml-auto font-medium">+$75</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-umbrella-beach text-blue-500 mr-2"></i>
+                                    <span>Balcony cleaning</span>
+                                    <span class="ml-auto font-medium">+$50</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span>Weekly:</span>
+                                    <span class="font-bold">$520 (15% off)</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Bi-weekly:</span>
+                                    <span class="font-bold">$540 (10% off)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Monthly:</span>
+                                    <span class="font-bold">$560 (5% off)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eco-Friendly Tab -->
+        <div id="eco" class="tab-content">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">Eco-Friendly Cleaning Services</h3>
+            <div class="grid md:grid-cols-1 gap-6">
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Eco-Friendly Cleaning (Any size)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$290</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$259</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Same as deep clean but uses eco-safe, fragrance-free products</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>3–4 hrs</span>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <ul class="space-y-2">
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-leaf text-blue-500 mr-2"></i>
+                                    <span>Pet-safe products</span>
+                                    <span class="ml-auto font-medium">+$20</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-allergies text-blue-500 mr-2"></i>
+                                    <span>Allergen clean</span>
+                                    <span class="ml-auto font-medium">+$25</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span>Weekly:</span>
+                                    <span class="font-bold">$230 (15% off)</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Bi-weekly:</span>
+                                    <span class="font-bold">$240 (10% off)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Monthly:</span>
+                                    <span class="font-bold">$250 (5% off)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Tab -->
+        <div id="custom" class="tab-content">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">Custom Cleaning Services</h3>
+            <div class="grid md:grid-cols-1 gap-6">
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Custom Cleaning (By Hours)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$50/hr</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$45/hr</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Client chooses areas; billed hourly (min 2 hrs)</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>As needed</span>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <p class="text-gray-600">Add-ons apply normally based on area requirements</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <p class="text-gray-600">10–15% off per schedule when booking recurring custom cleaning</p>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>button class="tab-btn px-4 py-2 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600" data-tab="eco">
+                    Eco-Friendly
+                </button>
+                <button class="tab-btn px-4 py-2 rounded-lg font-medium hover:bg-blue-50 hover:text-blue-600" data-tab="custom">
+                    Custom
+                </button>
+            </div>
+        </div>
+
+        <!-- Standard Cleaning Tab -->
+        <div id="standard" class="tab-content active">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">Standard Home Cleaning Services</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 1BHK Card -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden relative">
+                    <div class="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                        POPULAR
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Standard Cleaning (1BHK/Condo)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$170</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$149</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Light dusting, mopping, bathroom, kitchen surfaces, mirrors, vacuum</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>2–2.5 hrs</span>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <ul class="space-y-2">
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-paw text-blue-500 mr-2"></i>
+                                    <span>Pet area cleaning</span>
+                                    <span class="ml-auto font-medium">+$20</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-umbrella-beach text-blue-500 mr-2"></i>
+                                    <span>Balcony cleaning</span>
+                                    <span class="ml-auto font-medium">+$15</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-utensils text-blue-500 mr-2"></i>
+                                    <span>Kitchen deep clean</span>
+                                    <span class="ml-auto font-medium">+$25</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span>Weekly:</span>
+                                    <span class="font-bold">$145 (15% off)</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Bi-weekly:</span>
+                                    <span class="font-bold">$149 (10% off)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Monthly:</span>
+                                    <span class="font-bold">$153 (5% off)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2BHK Card -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Standard Cleaning (2BHK)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$210</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$189</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Full standard clean + detailed bathroom & kitchen cleaning</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>3–3.5 hrs</span>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <ul class="space-y-2">
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-paw text-blue-500 mr-2"></i>
+                                    <span>Pet area cleaning</span>
+                                    <span class="ml-auto font-medium">+$25</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-umbrella-beach text-blue-500 mr-2"></i>
+                                    <span>Balcony cleaning</span>
+                                    <span class="ml-auto font-medium">+$20</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-utensils text-blue-500 mr-2"></i>
+                                    <span>Kitchen deep clean</span>
+                                    <span class="ml-auto font-medium">+$30</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span>Weekly:</span>
+                                    <span class="font-bold">$175 (15% off)</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Bi-weekly:</span>
+                                    <span class="font-bold">$180 (10% off)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Monthly:</span>
+                                    <span class="font-bold">$189 (5% off)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deep Cleaning Tab -->
+        <div id="deep" class="tab-content">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">Deep Cleaning Services</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 1BHK Deep -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Deep Cleaning (1BHK/Condo)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$260</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$239</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Full deep clean, appliances, tiles, windows (interior), floor scrubbing</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>3.5–4 hrs</span>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <ul class="space-y-2">
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-paw text-blue-500 mr-2"></i>
+                                    <span>Pet area cleaning</span>
+                                    <span class="ml-auto font-medium">+$25</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-broom text-blue-500 mr-2"></i>
+                                    <span>Heavy stain removal</span>
+                                    <span class="ml-auto font-medium">+$30</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span>Weekly:</span>
+                                    <span class="font-bold">$199 (15% off)</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Bi-weekly:</span>
+                                    <span class="font-bold">$210 (10% off)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Monthly:</span>
+                                    <span class="font-bold">$220 (5% off)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2BHK Deep -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Deep Cleaning (2BHK)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$310</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$279</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Includes all areas, inside fridge, oven, baseboards, wall marks</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>4–4.5 hrs</span>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <ul class="space-y-2">
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-paw text-blue-500 mr-2"></i>
+                                    <span>Pet area cleaning</span>
+                                    <span class="ml-auto font-medium">+$30</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-utensils text-blue-500 mr-2"></i>
+                                    <span>Kitchen deep clean</span>
+                                    <span class="ml-auto font-medium">+$40</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-window-maximize text-blue-500 mr-2"></i>
+                                    <span>Windows cleaning</span>
+                                    <span class="ml-auto font-medium">+$25</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span>Weekly:</span>
+                                    <span class="font-bold">$250 (15% off)</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Bi-weekly:</span>
+                                    <span class="font-bold">$260 (10% off)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Monthly:</span>
+                                    <span class="font-bold">$270 (5% off)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3BHK Deep -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Deep Cleaning (3BHK)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$370</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$329</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Full house deep clean with appliance, washroom & balcony detailing</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>5–5.5 hrs</span>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <ul class="space-y-2">
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-paw text-blue-500 mr-2"></i>
+                                    <span>Pet area cleaning</span>
+                                    <span class="ml-auto font-medium">+$30</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-utensils text-blue-500 mr-2"></i>
+                                    <span>Heavy kitchen clean</span>
+                                    <span class="ml-auto font-medium">+$50</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-umbrella-beach text-blue-500 mr-2"></i>
+                                    <span>Balcony cleaning</span>
+                                    <span class="ml-auto font-medium">+$35</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span>Weekly:</span>
+                                    <span class="font-bold">$299 (15% off)</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Bi-weekly:</span>
+                                    <span class="font-bold">$310 (10% off)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Monthly:</span>
+                                    <span class="font-bold">$320 (5% off)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Move In/Out Tab -->
+        <div id="move" class="tab-content">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">Move In/Out Cleaning Services</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- 2BHK Move -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Move In/Out (2BHK)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$410</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$369</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Includes everything from deep cleaning + cabinet interiors, baseboards, drawers</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>5.5–6 hrs</span>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Add-ons:</h5>
+                            <ul class="space-y-2">
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-paw text-blue-500 mr-2"></i>
+                                    <span>Pet area cleaning</span>
+                                    <span class="ml-auto font-medium">+$30</span>
+                                </li>
+                                <li class="addon-item flex items-center px-3 py-2 rounded-lg">
+                                    <i class="fas fa-refrigerator text-blue-500 mr-2"></i>
+                                    <span>Fridge/oven deep clean</span>
+                                    <span class="ml-auto font-medium">+$40</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-gray-700 mb-2">Recurring Plans:</h5>
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <div class="flex justify-between mb-1">
+                                    <span>Weekly:</span>
+                                    <span class="font-bold">$330 (15% off)</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Bi-weekly:</span>
+                                    <span class="font-bold">$340 (10% off)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Monthly:</span>
+                                    <span class="font-bold">$350 (5% off)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition">
+                            Book This Service
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3BHK Move -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-xl font-bold text-gray-800">Move In/Out (3BHK)</h4>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through">$480</span>
+                                <span class="text-2xl font-bold text-blue-600 ml-2">$429</span>
+                                <span class="block text-sm text-green-600">Save 10%</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Empty unit cleaning, full disinfection, baseboards, walls, washrooms</p>
+                        <div class="flex items-center text-gray-500 mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>6–6.5 hrs</span>
+                        </div>
+                        <div class="mb-4">
+                            <
+</html>
