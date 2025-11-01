@@ -44,8 +44,8 @@ h2 {
     color: #222;
     margin-bottom: 1rem;
 }
-input, textarea, button {
-    width: 100%;
+input, select, textarea, button {
+    width: 90%;
     padding: 0.8rem;
     margin: 0.5rem 0;
     border: 1px solid #ccc;
@@ -118,6 +118,9 @@ button:hover {
      </select>
 
        <input type="number" name="price" placeholder="Service Price">
+
+       <textarea name="note" id="note" rows="5" placeholder="write note here ..."></textarea>
+
       <button type="submit">Submit Booking</button>
       <p id="msg"></p>
     </form>
@@ -135,7 +138,7 @@ button:hover {
 
 </div> <script>
 // IMPORTANT: Replace this with the actual 'exec' URL of your Apps Script Web App!
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxypJ0NrYrfkcCPVPN00bId7hFEvKQlnmsr3THAdOgqOKrtwsSCuTAVL0rd9tmQEwM/exec'; 
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxqKaQRCuxm1BbLXWT82T-zFNaSvqOVO-02bW6yQyWjT8zOEvfCq3e7SFMPBCEO6vdO/exec'; 
 
 // NOTE: These now correctly refer to elements in the HTML above
 const form = document.forms['submit-to-google-sheet'];

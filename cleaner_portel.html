@@ -55,7 +55,7 @@
   </div>
 
   <script>
-    const CLEANER_API_URL = "https://script.google.com/macros/s/AKfycbznvdgKoqXnWYN6KJBtupONideAZ9fhSMeFOVKWyHWBus6SQrwjfNdxCfYmpCGxZB3W/exec";
+    const CLEANER_API_URL = "https://script.google.com/macros/s/AKfycbzQtqfmIQ8w-ItBjPkV4V3zHoU_4U_ByiwStQ2J1OrQTdGG4fJdwqEWxvNpIneDfPQm/exec";
 
     const messageModal = document.getElementById('messageModal');
     const modalText = document.getElementById('modalText');
@@ -114,6 +114,8 @@
             <p><strong>Address:</strong> ${job.address}</p>
             <p><strong>Client:</strong> ${job.client_name}</p>
             <p><strong>Rep:</strong> ${job.rep_name}</p>
+            <p><strong>Job price:</strong> ${job.price}</p>
+            <p><strong>Note:</strong> ${job.note}</p>
           </div>
           <input type="hidden" name="action" value="updateStatus">
           <input type="hidden" name="rowIndex" value="${job.rowIndex}">
