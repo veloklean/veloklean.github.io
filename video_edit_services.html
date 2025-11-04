@@ -1,0 +1,1127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Video Editing Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/herosectionimg.jpg') center/cover no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+
+        .hero-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+            text-align: left;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+            text-align: left;
+        }
+
+        .cta-btn {
+            background: #ff4757;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4);
+        }
+
+        .stats {
+            background: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff4757;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .reviews {
+            background: #f8f9fa;
+            padding: 60px 20px;
+        }
+
+        .reviews h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .reviews-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .hero-form {
+            display: block;
+        }
+
+        .form-container {
+            max-width: 550px;
+            margin: 0;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #ff4757;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .radio-option:hover {
+            border-color: #ff4757;
+            background: #fff5f7;
+        }
+
+        .radio-option input[type="radio"] {
+            width: auto;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .price-label {
+            flex: 1;
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .price-discounted {
+            color: #ff4757;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-prev {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-prev:hover {
+            background: #d0d0d0;
+        }
+
+        .btn-next, .btn-submit {
+            background: #ff4757;
+            color: white;
+        }
+
+        .btn-next:hover, .btn-submit:hover {
+            background: #ff3847;
+            transform: translateY(-2px);
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .step-dot.active {
+            background: #ff4757;
+            transform: scale(1.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            animation: scaleIn 0.3s;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h2 {
+            color: #ff4757;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px 10px rgba(37, 211, 102, 0);
+            }
+        }
+
+        .whatsapp-btn:hover {
+            background: #20BA5A;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 40px 20px 20px;
+            }
+
+            .hero-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                text-align: center;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .hero-form {
+                display: none;
+            }
+
+            .form-section {
+                display: block;
+                padding: 40px 20px;
+                background: white;
+            }
+
+            .form-container {
+                padding: 25px;
+                max-width: 100%;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+         .loader-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader-modal.active {
+            display: flex;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loader {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .loader-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+            border-top-color: #ff4757;
+            border-radius: 50%;
+            animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        .loader-ring:nth-child(2) {
+            border-top-color: #ff6b81;
+            animation-delay: -0.4s;
+        }
+
+        .loader-ring:nth-child(3) {
+            border-top-color: #ff8fa3;
+            animation-delay: -0.8s;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .loader-dot {
+            width: 12px;
+            height: 12px;
+            background: #ff4757;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .loader-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .loader-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .loader-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 20px;
+            animation: fadeInOut 2s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <h1>Transform Your Videos Into Masterpieces</h1>
+                <p>Professional video editing for YouTube, Instagram, and commercial content — crafted to engage, inspire, and convert. Get expert-quality edits that make your brand stand out, all at prices that fit your budget.</p>
+                <button class="cta-btn" onclick="document.querySelector('.form-section').scrollIntoView({behavior: 'smooth'})">Get Started Today</button>
+            </div>
+            
+            <div class="hero-form">
+                <div class="form-container">
+                    <h2>Get Your Custom Quote</h2>
+                    <div class="step-indicator">
+                        <div class="step-dot active"></div>
+                        <div class="step-dot"></div>
+                        <div class="step-dot"></div>
+                        <div class="step-dot"></div>
+                        <div class="step-dot"></div>
+                    </div>
+                    <form id="editingForm">
+                        <div class="form-step active" data-step="1">
+                            <div class="form-group">
+                                <label>Select Video Type</label>
+                                <select id="videoType" name="videoType" required>
+                                    <option value="">Choose video type...</option>
+                                    <option value="youtube">YouTube Video</option>
+                                    <option value="instagram">Instagram Reel</option>
+                                    <option value="youtubeshorts">Youtube shorts</option>
+                                    <option value="commercial">Commercial/Advertising</option>
+                                </select>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-next" onclick="nextStep()">Next</button>
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="2">
+                            <div class="form-group">
+                                <label>Choose Editing Package</label>
+                                <div class="radio-group" id="packageOptions">
+                                </div>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-prev" onclick="prevStep()">Previous</button>
+                                <button type="button" class="btn btn-next" onclick="nextStep()">Next</button>
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="3">
+                            <div class="form-group">
+                                <label>Video Length</label>
+                                <select id="videoLength" name="videoLength" required>
+                                    <option value="">Choose video length...</option>
+                                    <option value="less1">Less than 1 minute</option>
+                                    <option value="1-3">1-3 minutes</option>
+                                    <option value="3-5">3-5 minutes</option>
+                                    <option value="5-10">5-10 minutes</option>
+                                    <option value="10plus">More than 10 minutes</option>
+                                </select>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-prev" onclick="prevStep()">Previous</button>
+                                <button type="button" class="btn btn-next" onclick="nextStep()">Next</button>
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="4">
+                            <div class="form-group">
+                                <label>Number of Videos Per Month</label>
+                                <select id="videoCount" name="videoCount" required>
+                                    <option value="">Choose number of videos...</option>
+                                    <option value="1-5">1-5 videos</option>
+                                    <option value="5-10">5-10 videos</option>
+                                    <option value="10-30">10-30 videos</option>
+                                    <option value="30plus">More than 30 videos</option>
+                                </select>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-prev" onclick="prevStep()">Previous</button>
+                                <button type="button" class="btn btn-next" onclick="nextStep()">Next</button>
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="5">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" id="name" name="cname" required placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="email" name="email" required placeholder="Enter your email">
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-prev" onclick="prevStep()">Previous</button>
+                                <button type="submit" class="btn btn-submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="form-container">
+            <h2>Get Your Custom Quote</h2>
+            <div class="step-indicator">
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+            <form id="editingForm2">
+                <div class="form-step active" data-step="1">
+                    <div class="form-group">
+                        <label>Select Video Type</label>
+                        <select id="videoType2" name="videoType" required>
+                            <option value="">Choose video type...</option>
+                            <option value="youtube">YouTube Video</option>
+                            <option value="instagram">Instagram Reel</option>
+                            <option value="youtubeshorts">Youtube shorts</option>
+                            <option value="commercial">Commercial/Advertising</option>
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-next" onclick="nextStep2()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="2">
+                    <div class="form-group">
+                        <label>Choose Editing Package</label>
+                        <div class="radio-group" id="packageOptions2">
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-prev" onclick="prevStep2()">Previous</button>
+                        <button type="button" class="btn btn-next" onclick="nextStep2()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="3">
+                    <div class="form-group">
+                        <label>Video Length</label>
+                        <select id="videoLength2" name="videoLength" required>
+                            <option value="">Choose video length...</option>
+                            <option value="less1">Less than 1 minute</option>
+                            <option value="1-3">1-3 minutes</option>
+                            <option value="3-5">3-5 minutes</option>
+                            <option value="5-10">5-10 minutes</option>
+                            <option value="10plus">More than 10 minutes</option>
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-prev" onclick="prevStep2()">Previous</button>
+                        <button type="button" class="btn btn-next" onclick="nextStep2()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="4">
+                    <div class="form-group">
+                        <label>Number of Videos Per Month</label>
+                        <select id="videoCount2" name="videoCount" required>
+                            <option value="">Choose number of videos...</option>
+                            <option value="1-5">1-5 videos</option>
+                            <option value="5-10">5-10 videos</option>
+                            <option value="10-30">10-30 videos</option>
+                            <option value="30plus">More than 30 videos</option>
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-prev" onclick="prevStep2()">Previous</button>
+                        <button type="button" class="btn btn-next" onclick="nextStep2()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="5">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="name2" name="cname" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone2" name="phone" required placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email2" name="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-prev" onclick="prevStep2()">Previous</button>
+                        <button type="submit" class="btn btn-submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+        <div class="loader-modal" id="loaderModal">
+        <div class="loader-content">
+            <div class="loader">
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+            </div>
+            <div class="loader-text">Submitting your request...</div>
+            <div class="loader-dots">
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" data-target="10000">0</div>
+                <div class="stat-label">Videos Successfully Edited</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="150">0</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.4<span style="font-size: 2rem;">⭐</span></div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <h2>What Our Clients Say</h2>
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"Outstanding work! My YouTube channel has grown significantly thanks to their professional editing. Highly recommended!"</p>
+                <p class="reviewer-name">- Rahul Sharma</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐</div>
+                <p class="review-text">"Fast turnaround time and excellent quality. They really understand what works for Instagram reels."</p>
+                <p class="reviewer-name">- Priya Patel</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"Best video editing service I've used. Professional, affordable, and always delivers on time!"</p>
+                <p class="reviewer-name">- Amit Kumar</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐</div>
+                <p class="review-text">"Great value for money. The premium editing package is worth every rupee. My commercial ads look amazing!"</p>
+                <p class="reviewer-name">- Sneha Gupta</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"They understood my vision perfectly and delivered beyond expectations. Will definitely work with them again!"</p>
+                <p class="reviewer-name">- Vikram Singh</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐</div>
+                <p class="review-text">"Responsive team and high-quality work. My social media engagement has doubled since I started using their services."</p>
+                <p class="reviewer-name">- Anjali Mehta</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="form-container">
+            <h2>Get Your Custom Quote</h2>
+            <div class="step-indicator">
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+            <form id="editingForm">
+                <div class="form-step active" data-step="1">
+                    <div class="form-group">
+                        <label>Select Video Type</label>
+                        <select id="videoType" required>
+                            <option value="">Choose video type...</option>
+                            <option value="youtube">YouTube Video</option>
+                            <option value="instagram">Instagram Reel</option>
+                            <option value="commercial">Commercial/Advertising</option>
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-next" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="2">
+                    <div class="form-group">
+                        <label>Choose Editing Package</label>
+                        <div class="radio-group" id="packageOptions">
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-prev" onclick="prevStep()">Previous</button>
+                        <button type="button" class="btn btn-next" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="3">
+                    <div class="form-group">
+                        <label>Video Length</label>
+                        <select id="videoLength" required>
+                            <option value="">Choose video length...</option>
+                            <option value="less1">Less than 1 minute</option>
+                            <option value="1-3">1-3 minutes</option>
+                            <option value="3-5">3-5 minutes</option>
+                            <option value="5-10">5-10 minutes</option>
+                            <option value="10plus">More than 10 minutes</option>
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-prev" onclick="prevStep()">Previous</button>
+                        <button type="button" class="btn btn-next" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="4">
+                    <div class="form-group">
+                        <label>Number of Videos Per Month</label>
+                        <select id="videoCount" required>
+                            <option value="">Choose number of videos...</option>
+                            <option value="1-5">1-5 videos</option>
+                            <option value="5-10">5-10 videos</option>
+                            <option value="10-30">10-30 videos</option>
+                            <option value="30plus">More than 30 videos</option>
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-prev" onclick="prevStep()">Previous</button>
+                        <button type="button" class="btn btn-next" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="5">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-prev" onclick="prevStep()">Previous</button>
+                        <button type="submit" class="btn btn-submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+ 
+
+    <div class="modal" id="thankYouModal">
+        <div class="modal-content">
+            <h2>🎉 Thank You!</h2>
+            <p>Your request has been submitted successfully. We'll get back to you soon!</p>
+            <a href="https://wa.me/+917310790490?text=Hi%2C%20I%20just%20submitted%20a%20quote%20request%20for%20video%20editing%20services" class="whatsapp-btn" target="_blank">💬 Message Us on WhatsApp</a>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        const prices = {
+            youtube: {
+                normal: { original: 250, discounted: 99 },
+                premium: { original: 300, discounted: 149 }
+            },
+            instagram: {
+                normal: { original: 350, discounted: 249 },
+                premium: { original: 450, discounted: 349 }
+            },
+
+            youtubeshorts: {
+                normal: { original: 350, discounted: 249 },
+                premium: { original: 450, discounted: 349 }
+            },
+
+            commercial: {
+                normal: { original: 350, discounted: 249 },
+                premium: { original: 450, discounted: 349 }
+            }
+        };
+
+        document.getElementById('videoType').addEventListener('change', function() {
+            const videoType = this.value;
+            if (videoType) {
+                updatePackageOptions(videoType);
+            }
+        });
+
+        function updatePackageOptions(videoType) {
+            const container = document.getElementById('packageOptions');
+            const priceData = prices[videoType];
+            
+            container.innerHTML = `
+                <label class="radio-option">
+                    <input type="radio" name="package" value="normal" required>
+                    <div class="price-label">
+                        <div><strong>Normal Editing</strong></div>
+                        <div class="price-original">₹${priceData.normal.original}/min</div>
+                        <div class="price-discounted">₹${priceData.normal.discounted}/min</div>
+                    </div>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="package" value="premium" required>
+                    <div class="price-label">
+                        <div><strong>Premium Editing</strong></div>
+                        <div class="price-original">₹${priceData.premium.original}/min</div>
+                        <div class="price-discounted">₹${priceData.premium.discounted}/min</div>
+                    </div>
+                </label>
+            `;
+        }
+
+        function nextStep() {
+            const currentStepEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const inputs = currentStepEl.querySelectorAll('select, input');
+            let valid = true;
+
+            inputs.forEach(input => {
+                if (input.hasAttribute('required') && !input.value) {
+                    valid = false;
+                    input.style.borderColor = '#ff4757';
+                } else {
+                    input.style.borderColor = '#e0e0e0';
+                }
+            });
+
+            if (currentStep === 2) {
+                const packageSelected = document.querySelector('input[name="package"]:checked');
+                if (!packageSelected) {
+                    valid = false;
+                    alert('Please select a package');
+                }
+            }
+
+            if (valid && currentStep < totalSteps) {
+                currentStep++;
+                updateSteps();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateSteps();
+            }
+        }
+
+        function updateSteps() {
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add('active');
+
+            document.querySelectorAll('.step-dot').forEach((dot, index) => {
+                if (index < currentStep) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        document.getElementById('editingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = {
+                videoType: document.getElementById('videoType').value,
+                package: document.querySelector('input[name="package"]:checked').value,
+                videoLength: document.getElementById('videoLength').value,
+                videoCount: document.getElementById('videoCount').value,
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                timestamp: new Date().toISOString()
+            };
+
+             document.getElementById('loaderModal').classList.add('active');
+
+            try {
+                await fetch('https://script.google.com/macros/s/AKfycby7zzXSOJ2bUTNaRpG16z70yMcEcV7CzWOF5Nh3ihKyMWwvar-4GjgR5_-AmyKWGLl_6A/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                 await new Promise(resolve => setTimeout(resolve, 1500));
+
+                 // Hide loader
+                document.getElementById('loaderModal').classList.remove('active');
+
+                document.getElementById('thankYouModal').classList.add('active');
+                document.getElementById('editingForm').reset();
+                currentStep = 1;
+                updateSteps();
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('thankYouModal').classList.add('active');
+            }
+        });
+
+        function animateCounter(el) {
+            const target = parseInt(el.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    el.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    el.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 16);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number[data-target]');
+                    counters.forEach(counter => {
+                        if (!counter.classList.contains('animated')) {
+                            counter.classList.add('animated');
+                            animateCounter(counter);
+                        }
+                    });
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.stats'));
+    </script>
+</body>
+</html>
