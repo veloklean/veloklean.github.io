@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veloklean — Graphic Designs</title>
+  <meta name="description" content="High-converting graphic designs for realtors and fitness coaches by Bhuvnesh Raghav">
+  <style>
+    /* ========== CSS Variables & Tokens ========== */
+    :root {
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 2rem;
+      --spacing-lg: 4rem;
+      --spacing-xl: 6rem;
+      --radius-sm: 0.5rem;
+      --radius-md: 1rem;
+      --radius-lg: 1.5rem;
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="light"] {
+      --bg: #FFFFFF;
+      --bg-secondary: #F9FAFB;
+      --card: rgba(0, 0, 0, 0.04);
+      --card-hover: rgba(0, 0, 0, 0.08);
+      --text: #111827;
+      --text-muted: #6B7280;
+      --accent: #00A3FF;
+      --accent-hover: #0084CC;
+      --border: rgba(0, 0, 0, 0.1);
+      --shadow: rgba(0, 0, 0, 0.1);
+      --glow: rgba(0, 163, 255, 0.3);
+    }
+
+    [data-theme="dark"] {
+      --bg: #05060a;
+      --bg-secondary: #0a0c14;
+      --card: rgba(255, 255, 255, 0.03);
+      --card-hover: rgba(255, 255, 255, 0.06);
+      --text: #F9FAFB;
+      --text-muted: #9CA3AF;
+      --accent: #08b1c4;
+      --accent-hover: #00B8D4;
+      --border: rgba(255, 255, 255, 0.1);
+      --shadow: rgba(0, 0, 0, 0.5);
+      --glow: rgba(0, 229, 255, 0.4);
+    }
+
+    /* ========== Reset & Base ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background var(--transition-base), color var(--transition-base);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ========== Navigation ========== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: var(--spacing-sm) var(--spacing-md);
+      transition: backdrop-filter var(--transition-base), background var(--transition-base);
+    }
+
+    .nav.scrolled {
+      backdrop-filter: blur(12px);
+      background: rgba(5, 6, 10, 0.8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    [data-theme="light"] .nav.scrolled {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--spacing-md);
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+      font-size: 1.2rem;
+    }
+
+    .theme-toggle:hover {
+      background: var(--card-hover);
+      transform: scale(1.1);
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ========== Hero Section ========== */
+   .hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  position: relative;
+  overflow: hidden;
+  
+  /* Background */
+  background-image: url('https://i.pinimg.com/736x/cf/a3/d0/cfa3d096ffd4ea2c6105c84a524fad72.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Fix background */
+}
+
+/* Blur overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(8px); /* Blur effect */
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.15); /* optional subtle dark tint */
+  z-index: 0;
+}
+
+/* Make sure your content stays above the blur */
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+    
+
+    .hero-container {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+      
+      position: relative;
+      z-index: 10;
+    }
+
+   
+
+    .hero-content {
+      opacity: 0;
+      animation: fadeInUp 1s var(--transition-base) forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+    }
+
+    .eyebrow {
+      font-size: 0.875rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: var(--spacing-sm);
+      opacity: 1;
+      animation: fadeInUp 1s 0.2s var(--transition-base) forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: var(--spacing-md);
+      color: var(--text);
+    }
+
+    .hero h1 .word {
+      display: inline-block;
+      opacity: 2;
+      animation: fadeInUp 0.6s var(--transition-base) forwards;
+    }
+
+    .hero h1 .word:nth-child(1) { animation-delay: 0.3s; }
+    .hero h1 .word:nth-child(2) { animation-delay: 0.4s; }
+    .hero h1 .word:nth-child(3) { animation-delay: 0.5s; }
+    .hero h1 .word:nth-child(4) { animation-delay: 0.6s; }
+    .hero h1 .word:nth-child(5) { animation-delay: 0.7s; }
+    .hero h1 .word:nth-child(6) { animation-delay: 0.8s; }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-lg);
+      opacity: 10;
+      animation: fadeInUp 1s 0.9s var(--transition-base) forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      opacity: 0;
+       opacity: 10;
+      animation: fadeInUp 1s 1s var(--transition-base) forwards;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      transition: all var(--transition-fast);
+      cursor: pointer;
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, var(--glow) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+
+    .btn:hover::before {
+      opacity: 1;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 10px 30px var(--glow);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px var(--glow);
+    }
+
+    .btn.secondary {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn.secondary:hover {
+      background: var(--card-hover);
+      transform: translateY(-2px);
+    }
+
+    .hero-badge {
+      margin-top: var(--spacing-sm);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      display: inline-block;
+      
+      z-index: 1;
+      animation: fadeInUp 1s 1.1s var(--transition-base) forwards;
+    }
+
+    .hero-visual {
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+  animation: fadeIn 1.2s 0.5s var(--transition-base) forwards;
+}
+
+/* Move the image 50px down + add up-down animation */
+.hero-visual img {
+  position: relative;
+  transform: translateY(50px);          /* Move image down */
+  animation: floatUpDown 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Up–down animation */
+@keyframes floatUpDown {
+  0% { transform: translateY(50px); }
+  50% { transform: translateY(20px); }
+  100% { transform: translateY(50px); }
+}
+
+
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .hero-mockup {
+      width: 100%;
+      max-width: 500px;
+      aspect-ratio: 1;
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 20px 60px var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-mockup img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+    }
+
+    .hero-mockup::before {
+      content: '🎨';
+      font-size: 8rem;
+      opacity: 0.5;
+      position: absolute;
+    }
+
+    .hero-mockup.has-image::before {
+      display: none;
+    }
+
+    /* ========== Work Section ========== */
+    .work {
+      padding: var(--spacing-xl) var(--spacing-md);
+      background: var(--bg-secondary);
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.125rem;
+    }
+
+    .filter-chips {
+      display: flex;
+      gap: var(--spacing-sm);
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .chip {
+      padding: var(--spacing-xs) var(--spacing-md);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .chip:hover, .chip.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .work-item {
+      background: var(--card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .work-item.revealed {
+      animation: fadeInUp 0.6s var(--transition-base) forwards;
+    }
+
+    .work-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .work-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .work-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .work-item-content {
+      padding: var(--spacing-md);
+    }
+
+    .work-item h3 {
+      font-size: 1.25rem;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .work-item-tags {
+      display: flex;
+      gap: var(--spacing-xs);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      background: var(--accent);
+      color: white;
+      border-radius: var(--radius-sm);
+    }
+
+    .work-item p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* ========== Modal ========== */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-md);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      animation: fadeIn 0.3s forwards;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: var(--spacing-lg);
+      overflow-y: auto;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: modalEnter 0.4s 0.1s forwards;
+    }
+
+    @keyframes modalEnter {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: var(--spacing-md);
+      right: var(--spacing-md);
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: var(--card-hover);
+      color: var(--text);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+    }
+
+    .modal-close:hover {
+      background: var(--accent);
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    .modal-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .modal-image {
+      width: 100%;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+
+    .modal h3 {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .modal-meta {
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .modal-cta {
+      display: flex;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-md);
+    }
+
+    /* ========== About Section ========== */
+    .about {
+      padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .about-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: var(--spacing-lg);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--spacing-lg);
+      align-items: start;
+    }
+
+    .about-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-shadow: 0 10px 30px var(--glow);
+    }
+
+    .about-avatar img{
+       width: 110px;
+      height: 110px;
+      border-radius: 50%;
+    }
+
+    .about-content h2 {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .about-content p {
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-md);
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .skill {
+      padding: var(--spacing-sm);
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .clients {
+      margin-top: var(--spacing-md);
+      padding-top: var(--spacing-md);
+      border-top: 1px solid var(--border);
+    }
+
+    .clients h3 {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .clients-list {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ========== Footer ========== */
+    .footer {
+      padding: var(--spacing-lg) var(--spacing-md);
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      margin-top: var(--spacing-sm);
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .about-avatar {
+        margin: 0 auto;
+      }
+
+      .modal-images {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="#" class="logo">Velo<span>klean</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#work" class="nav-link">Work</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="eyebrow">Portfolio • Graphic Design</div>
+        <h1>
+          <span class="word">Designs</span>
+          <span class="word">that</span>
+          <span class="word">get</span>
+          <span class="word">clicks,</span>
+          <span class="word">leads,</span>
+          <span class="word">and</span>
+          <span class="word">attention</span>
+        </h1>
+        <p>High-converting posts, thumbnails and realtor listings — made for growth.</p>
+        <div class="hero-cta">
+          <a href="#" class="btn primary" id="instagramBtn">
+            📱 Instagram
+          </a>
+         
+          <a href="#" class="btn secondary" id="whatsappBtn">
+            💬 WhatsApp
+          </a>
+        </div>
+        <div class="hero-badge">✨ Free redesign via DM</div>
+      </div>
+      <div class="hero-visual">
+        <img src="/img/astronaut-with-pencil-pen-tool-created-clipping-path-included-jpeg-easy-composite-removebg-preview.png" alt="">
+      </div>
+    
+    </div>
+  </section>
+
+  <!-- Work Section -->
+  <section class="work" id="work">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Selected Work</h2>
+        <p>High-converting designs for real businesses</p>
+      </div>
+      
+      <div class="filter-chips">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="realtors">Realtors</button>
+        <button class="chip" data-filter="fitness">Fitness</button>
+        <button class="chip" data-filter="thumbnails">Thumbnails</button>
+      </div>
+
+      <div class="work-grid" id="workGrid"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="section-container">
+      <div class="about-container">
+        <div class="about-avatar"><img src="dashboard.png" alt=""></div>
+        <div class="about-content">
+          <h2>About</h2>
+          <p>Hi, I'm Bhuvnesh. I design high-converting creatives for realtors and fitness coaches. I help businesses turn scrollers into leads.</p>
+          
+          <div class="skills-grid">
+            <div class="skill">Instagram Creatives</div>
+            <div class="skill">YouTube Thumbnails</div>
+            <div class="skill">Realtor Listing Posts</div>
+            <div class="skill">Photoshop • Figma • Illustrator</div>
+          </div>
+
+          <div class="clients">
+            <h3>Trusted By</h3>
+            <div class="clients-list">
+              <span>Kepsten Cleaning Services</span>
+              <span>•</span>
+              <span>Omaxe Real Estate</span>
+            </div>
+          </div>
+
+          <p style="margin-top: 2rem; font-weight: 600;">Want a free redesign? Send me your post on Instagram or WhatsApp.</p>
+          <div class="hero-cta">
+            <a href="#" class="btn primary" id="instagramBtn2">📱 Instagram</a>
+            <a href="#" class="btn secondary" id="whatsappBtn2">💬 WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© <span id="year"></span> Veloklean. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+      <p style="margin-top: 1rem; font-size: 0.75rem;">Built for all screens • Accessible • Smooth animations</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">×</button>
+      <div id="modalBody"></div>
+    </div>
+
+    
+  </div>
+
+  <script>
+    // ========== Configuration ==========
+    const INSTAGRAM_URL = 'https://instagram.com/veloklean'; // Replace with actual URL
+    const FACEBOOK_URL = 'https://facebook.com/veloklean'; // Replace with actual URL
+    const WHATSAPP_URL = 'https://wa.me/+918920419130'; // Replace with actual WhatsApp number
+   
+
+    // ========== Sample Projects Data ==========
+    // 📌 PASTE YOUR GOOGLE DRIVE IMAGE URLS HERE
+    // How to get Google Drive direct link:
+    // 1. Right-click image in Google Drive → Get link → Change to "Anyone with the link"
+    // 2. Copy the FILE_ID from the URL: https://drive.google.com/file/d/FILE_ID/view
+    // 3. Use this format: https://drive.google.com/uc?export=view&id=FILE_ID
+    
+    const projects = [
+      {
+        id: 'real estate',
+        title: 'real estate — Listing Boost',
+        tags: ['Real Estate', 'Listing Post'],
+        category: 'realtors',
+        client: 'Real Estate',
+        description: 'Transformed a standard property listing into a high-engagement post that increased inquiries by 3×',
+        metrics: '',
+        thumbnail: 'https://i.pinimg.com/1200x/fe/32/e8/fe32e8de6a23f845676e9aed3fc05ec2.jpg', // 👈 Replace with your image URL
+        beforeImage: 'https://i.pinimg.com/1200x/fe/32/e8/fe32e8de6a23f845676e9aed3fc05ec2.jpg', // Optional
+        afterImage: 'https://i.pinimg.com/1200x/fb/2e/a0/fb2ea0186ac3c72be581dfd78017a9b0.jpg' // Optional
+      },
+      {
+        id: 'social',
+        title: 'Social Campaign',
+        tags: ['marketing', 'Instagram'],
+        category: 'marketing',
+        client: 'instagram posts for an agency',
+        description: 'Complete social media redesign that modernized their brand presence',
+        metrics: '',
+        thumbnail: 'https://i.pinimg.com/1200x/56/81/a5/5681a5ccb6954f7ada0f952b3d0b7e9f.jpg', // 👈 Replace
+        beforeImage: 'https://i.pinimg.com/1200x/09/f5/f4/09f5f42bd199998abcf332de8769976e.jpg',
+        afterImage: 'https://i.pinimg.com/1200x/ad/f2/e0/adf2e08ff4da50962de57c4734e3e0ea.jpg'
+      },
+      {
+        id: 'fitness-thumb',
+        title: 'instagram posts samples for coaches',
+        tags: ['fitness', 'coaches'],
+        category: 'instagram post',
+        client: 'Fitness Coach',
+        description: 'Eye-catching posts that boosted click-through rate significantly',
+        metrics: '',
+        thumbnail: 'https://i.pinimg.com/1200x/43/3d/8d/433d8d8f2b35f2662162d867670032bf.jpg', // 👈 Replace
+        beforeImage: 'https://i.pinimg.com/1200x/43/3d/8d/433d8d8f2b35f2662162d867670032bf.jpg',
+        afterImage: 'https://i.pinimg.com/1200x/be/e8/f7/bee8f7d139fe7c13ebb741eed3698ced.jpg'
+      },
+      {
+        id: 'realtor-grid',
+        title: 'Kepsten designs',
+        tags: ['kepsten', 'posters'],
+        category: 'kepsten poster design',
+        client: 'Premium post posters',
+        description: 'Premium posts and posters for high-end cleaning services kepsten',
+        metrics: '',
+        thumbnail: 'https://i.pinimg.com/1200x/6c/0c/44/6c0c440245b83eca7f39fd17be93d34c.jpg', // 👈 Replace
+        beforeImage: 'https://i.pinimg.com/1200x/fb/95/37/fb9537f03def3f2db36f011723f9c95c.jpg',
+        afterImage: 'https://i.pinimg.com/1200x/f6/b4/a0/f6b4a0c072d5aa693f095a0adbf450d5.jpg'
+      },
+      {
+        id: 'thumbnail-pack',
+        title: 'YouTube Thumbnail Pack',
+        tags: ['YouTube', 'Thumbnails'],
+        category: 'thumbnails',
+        client: 'Content Creator',
+        description: 'Series of high-converting thumbnails with consistent branding',
+        metrics: '',
+        thumbnail: 'https://i.pinimg.com/1200x/41/64/8d/41648d61d0c4c713883eb6efb11b8474.jpg', // 👈 Replace
+        beforeImage: 'https://i.pinimg.com/1200x/41/64/8d/41648d61d0c4c713883eb6efb11b8474.jpg',
+        afterImage: 'https://i.pinimg.com/1200x/17/c7/41/17c7416fac95e31be837228baef8029c.jpg'
+      },
+
+      
+
+      {
+        id: 'fitness-promo',
+        title: 'Fitness Program Launch',
+        tags: ['Fitness', 'Promo'],
+        category: 'fitness',
+        client: 'FitLife Coaching',
+        description: 'Launch campaign that drove sign-ups for new training program',
+        metrics: '',
+        thumbnail: 'https://i.pinimg.com/1200x/7e/89/8b/7e898b2886c125b745c91cbc8e3f0eca.jpg', // 👈 Replace
+        beforeImage: 'https://i.pinimg.com/1200x/7e/89/8b/7e898b2886c125b745c91cbc8e3f0eca.jpg',
+        afterImage: 'https://i.pinimg.com/736x/6e/8b/0d/6e8b0dcad4fef64858b2d76d039126a4.jpg'
+      }
+    ];
+
+    // ========== Theme Management ==========
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const html = document.documentElement;
+
+    // Check for saved theme or system preference
+    const savedTheme = localStorage.getItem('veloklean_theme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const initialTheme = savedTheme || systemTheme;
+
+    html.dataset.theme = initialTheme;
+    themeIcon.textContent = initialTheme === 'dark' ? '🌙' : '☀️';
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.dataset.theme;
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.dataset.theme = newTheme;
+      themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+      localStorage.setItem('veloklean_theme', newTheme);
+    });
+
+    // ========== Navigation Scroll Effect ==========
+    const nav = document.getElementById('nav');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+
+      // Update active nav link (scrollspy)
+      const sections = document.querySelectorAll('section');
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scroll for nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // ========== Hero Image Setup ==========
+    const heroMockup = document.getElementById('heroMockup');
+    
+   
+    // ========== CTA Button Handlers ==========
+    function setupCTAButtons() {
+      const instagramBtns = [document.getElementById('instagramBtn'), document.getElementById('instagramBtn2')];
+      const facebookBtn = document.getElementById('facebookBtn');
+      const whatsappBtns = [document.getElementById('whatsappBtn'), document.getElementById('whatsappBtn2')];
+
+      instagramBtns.forEach(btn => {
+        if (btn) {
+          btn.href = INSTAGRAM_URL;
+          btn.addEventListener('click', (e) => {
+            console.log('Instagram CTA clicked');
+          });
+        }
+      });
+
+      if (facebookBtn) {
+        facebookBtn.href = FACEBOOK_URL;
+        facebookBtn.addEventListener('click', (e) => {
+          console.log('Facebook CTA clicked');
+        });
+      }
+
+      whatsappBtns.forEach(btn => {
+        if (btn) {
+          btn.href = WHATSAPP_URL;
+          btn.addEventListener('click', (e) => {
+            console.log('WhatsApp CTA clicked');
+          });
+        }
+      });
+    }
+
+    setupCTAButtons();
+
+    // ========== Work Grid Population ==========
+    const workGrid = document.getElementById('workGrid');
+    let currentFilter = 'all';
+
+    function createWorkItem(project) {
+      const item = document.createElement('div');
+      item.className = 'work-item';
+      item.dataset.category = project.category;
+      
+      // Check if thumbnail exists, otherwise use placeholder
+      const hasImage = project.thumbnail && !project.thumbnail.includes('YOUR_FILE_ID');
+      
+      if (hasImage) {
+        item.innerHTML = `
+          <img src="${project.thumbnail}" alt="${project.title}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div style="display: none; width: 100%; height: 250px; background: linear-gradient(135deg, #00A3FF 0%, rgba(0,0,0,0.3) 100%); align-items: center; justify-content: center; font-size: 3rem; color: white;">
+            ${project.tags[0] === 'Real Estate' ? '🏠' : project.tags[0] === 'YouTube' ? '▶️' : '💪'}
+          </div>
+          <div class="work-item-content">
+            <h3>${project.title}</h3>
+            <div class="work-item-tags">
+              ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <p>${project.client} • ${project.metrics}</p>
+          </div>
+        `;
+      } else {
+        // Fallback to gradient placeholder
+        const colors = ['#00A3FF', '#00E5FF', '#7C3AED', '#EC4899'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        item.innerHTML = `
+          <div style="width: 100%; height: 250px; background: linear-gradient(135deg, ${randomColor} 0%, rgba(0,0,0,0.3) 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">
+            ${project.tags[0] === 'Real Estate' ? '🏠' : project.tags[0] === 'YouTube' ? '▶️' : '💪'}
+          </div>
+          <div class="work-item-content">
+            <h3>${project.title}</h3>
+            <div class="work-item-tags">
+              ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <p>${project.client} • ${project.metrics}</p>
+          </div>
+        `;
+      }
+
+      item.addEventListener('click', () => openModal(project));
+      
+      return item;
+    }
+
+    function renderWorkGrid() {
+      workGrid.innerHTML = '';
+      
+      projects
+        .filter(p => currentFilter === 'all' || p.category === currentFilter)
+        .forEach(project => {
+          const item = createWorkItem(project);
+          workGrid.appendChild(item);
+        });
+
+      // Reveal animation with IntersectionObserver
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('revealed');
+            }, index * 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.work-item').forEach(item => {
+        observer.observe(item);
+      });
+    }
+
+    // ========== Filter Chips ==========
+    const filterChips = document.querySelectorAll('.chip');
+
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        
+        currentFilter = chip.dataset.filter;
+        renderWorkGrid();
+      });
+    });
+
+    // Initial render
+    renderWorkGrid();
+
+    // ========== Modal ==========
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modalBody');
+    const modalClose = document.getElementById('modalClose');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+
+    function openModal(project) {
+      const hasBeforeAfter = project.beforeImage && project.afterImage && 
+                            !project.beforeImage.includes('YOUR_FILE_ID') && 
+                            !project.afterImage.includes('YOUR_FILE_ID');
+      
+      const hasThumbnail = project.thumbnail && !project.thumbnail.includes('YOUR_FILE_ID');
+      
+      let imagesHTML = '';
+      
+      if (hasBeforeAfter) {
+        imagesHTML = `
+          <div class="modal-images">
+            <div>
+              <p style="text-align: center; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-muted);">design 1</p>
+              <img src="${project.beforeImage}" alt="Before" class="modal-image" loading="lazy">
+            </div>
+            <div>
+              <p style="text-align: center; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-muted);">design 2</p>
+              <img src="${project.afterImage}" alt="After" class="modal-image" loading="lazy">
+            </div>
+          </div>
+        `;
+      } else if (hasThumbnail) {
+        imagesHTML = `
+          <div style="margin-bottom: 2rem;">
+            <img src="${project.thumbnail}" alt="${project.title}" style="width: 100%; border-radius: 1rem; border: 1px solid var(--border);" loading="lazy">
+          </div>
+        `;
+      } else {
+        imagesHTML = `
+          <div class="modal-images">
+            <div style="width: 100%; height: 300px; background: linear-gradient(135deg, #00A3FF 0%, rgba(0,0,0,0.3) 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+              📊
+            </div>
+            <div style="width: 100%; height: 300px; background: linear-gradient(135deg, #00E5FF 0%, rgba(0,0,0,0.3) 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+              ✨
+            </div>
+          </div>
+        `;
+      }
+      
+      modalBody.innerHTML = `
+        ${imagesHTML}
+        <h3>${project.title}</h3>
+        <div class="modal-meta">
+          <strong>${project.client}</strong> • ${project.metrics}
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">${project.description}</p>
+        <div class="work-item-tags">
+          ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+        <div class="modal-cta">
+          <a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="btn primary">📱 DM for Similar Work</a>
+          <a href="${WHATSAPP_URL}" target="_blank" rel="noopener" class="btn secondary">💬 WhatsApp</a>
+        </div>
+      `;
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // ========== Footer Year ==========
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ========== Mobile Navigation ==========
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinksEl = document.getElementById('navLinks');
+
+    mobileToggle.addEventListener('click', () => {
+      navLinksEl.style.display = navLinksEl.style.display === 'flex' ? 'none' : 'flex';
+      if (navLinksEl.style.display === 'flex') {
+        navLinksEl.style.position = 'absolute';
+        navLinksEl.style.top = '100%';
+        navLinksEl.style.left = '0';
+        navLinksEl.style.right = '0';
+        navLinksEl.style.flexDirection = 'column';
+        navLinksEl.style.background = 'var(--card)';
+        navLinksEl.style.padding = '2rem';
+        navLinksEl.style.backdropFilter = 'blur(12px)';
+        navLinksEl.style.borderBottom = '1px solid var(--border)';
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+          navLinksEl.style.display = 'none';
+        }
+      });
+    });
+
+    // ========== Magnetic Button Effect ==========
+    const buttons = document.querySelectorAll('.btn.primary');
+    
+    buttons.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) translateY(-2px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+
+    // ========== Scroll Reveal for About Section ==========
+    const aboutSection = document.querySelector('.about-container');
+    
+    const aboutObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '0';
+          entry.target.style.transform = 'translateY(30px)';
+          entry.target.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+          
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, 100);
+          
+          aboutObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (aboutSection) {
+      aboutObserver.observe(aboutSection);
+    }
+
+    
+  </script>
+</body>
+</html>
