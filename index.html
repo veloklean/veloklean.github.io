@@ -3,294 +3,824 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloKlean: Effortless Cleaning, Elevated by Technology</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Veloklean - Automate Customer Conversations. Grow Faster.</title>
+    <meta name="description" content="WhatsApp, Email, Calling & CRM automation — built for modern businesses. Digital design services for restaurants and local brands.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cause:wght@100..900&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+   
+   <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0F172A;
+            --accent: #3B82F6;
+            --text: #334155;
+            --text-light: #64748B;
+            --bg: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --border: #E2E8F0;
+        }
+
+        body {
+            
+            
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+ .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(
+    90deg,
+    rgb(139, 92, 246),
+    rgb(56, 189, 248)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(56, 189, 248, 0.35));
+}
+
+
+
+
+        .nav-cta {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(15, 23, 42, 0.05) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            animation: float 15s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(30px, 30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .pricing-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 1.5rem 0;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            padding: 0.75rem 0;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-card ul li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 0.75rem;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .about-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-content p {
+            font-size: 1.15rem;
+            color: var(--text);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-founder {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .about-founder strong {
+            color: var(--primary);
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stars {
+            color: #FCD34D;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-card p {
+            color: var(--text);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .reviewer {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .reviewer-role {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .contact-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            font-size: 1.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: #94A3B8;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            color: #94A3B8;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .services-grid,
+            .pricing-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <div id="preloader">
-        <div class="clyra-logo-pulse">
-            <i class="fas fa-magic"></i> VeloKlean
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Veloklean</div>
+            <div class="nav-cta">
+                <a href="https://wa.me/918920419130" class="btn btn-primary">WhatsApp</a>
+                <a href="mailto:team@veloklean.services" class="btn btn-secondary">Email</a>
+            </div>
         </div>
-    </div>
+    </nav>
 
-    <header id="navbar">
-        <a href="#" class="logo">
-            <i class="fas fa-tint"></i> VeloKlean
-        </a>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#locations">Locations</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#contact">Contact</a>
-            
-        </nav>
-        <a href="#contact" class="cta-button">Get a Quote</a>
-    </header>
-
-    <section id="hero" class="hero-section">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="hero-content">
-            <h1 data-aos="fade-up" data-aos-delay="500">Effortless Cleaning, Elevated by Technology.</h1>
-            <p data-aos="fade-up" data-aos-delay="700">Book trusted home, office, and commercial cleaners in minutes — powered by modern automation and real people who care.</p>
-            <div class="hero-ctas" data-aos="fade-up" data-aos-delay="900">
-                <a href="#contact" class="btn primary-cta">Get a Free Quote</a>
-                <a href="#services" class="btn secondary-cta">See Our Services</a>
+            <h1>Automate Customer Conversations. Grow Faster.</h1>
+            <p>WhatsApp, Email, Calling & CRM automation — built for modern businesses. Save time, increase conversions, and scale effortlessly.</p>
+            <div class="hero-cta">
+                <a href="https://wa.me/918920419130" class="btn btn-primary">Message us on WhatsApp</a>
+                <a href="mailto:team@veloklean.services" class="btn btn-secondary">Contact via Email</a>
             </div>
         </div>
-        <div class="hero-image-container" data-aos="fade-left" data-aos-delay="1100">
-            <img src="/img/hero.png" alt="Futuristic cleaning robot and human teamwork" loading="lazy">
-        </div>
-        <div class="hero-gradient-overlay"></div>
     </section>
 
-    <section id="services" class="section-padding">
-        <h2 data-aos="fade-up">Our Specialized Cleaning Services</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">From spotless homes to shining offices — we handle every space with precision.</p>
-
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Comprehensive automation solutions designed to help your business work smarter</p>
+        </div>
         <div class="services-grid">
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-home service-icon"></i>
-                <h3>Home Deep Cleaning</h3>
-                <p>Thorough, systematic cleaning for a truly spotless living space.</p>
+            <div class="service-card">
+                <span class="service-icon">💬</span>
+                <h3>WhatsApp Automation</h3>
+                <p>Automated customer replies, menu sharing, order taking, and lead capture. Never miss a customer conversation again.</p>
             </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-building service-icon"></i>
-                <h3>Office / Commercial Cleaning</h3>
-                <p>Maintain a professional and hygienic environment for your business.</p>
+            <div class="service-card">
+                <span class="service-icon">📧</span>
+                <h3>Email Automation</h3>
+                <p>Auto follow-ups, lead nurturing, and customer notifications. Keep your audience engaged without lifting a finger.</p>
             </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                <i class="fas fa-box-open service-icon"></i>
-                <h3>Move-In / Move-Out Cleaning</h3>
-                <p>Full-spectrum service to ensure a smooth transition into or out of a property.</p>
+            <div class="service-card">
+                <span class="service-icon">📞</span>
+                <h3>Calling Agents Automation</h3>
+                <p>Smart call routing, agent handoff, and follow-up calls. Ensure every inquiry gets the attention it deserves.</p>
             </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                <i class="fas fa-couch service-icon"></i>
-                <h3>Carpet & Upholstery Cleaning</h3>
-                <p>Advanced techniques to renew and refresh all your fabrics.</p>
+            <div class="service-card">
+                <span class="service-icon">⚙️</span>
+                <h3>CRM & Workflow Automation</h3>
+                <p>Centralized customer management, lead tracking, and business insights. Get complete visibility into your operations.</p>
             </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-                <i class="fas fa-hard-hat service-icon"></i>
-                <h3>Post-Construction Cleaning</h3>
-                <p>Detailed cleanup after building work, leaving the space immaculate.</p>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="700">
-                <i class="fas fa-utensils service-icon"></i>
-                <h3>Restaurant / Retail Cleaning</h3>
-                <p>Specialized hygiene and sanitization for high-traffic public spaces.</p>
+            <div class="service-card">
+                <span class="service-icon">🎨</span>
+                <h3>Designing Services</h3>
+                <p>Social media creatives, product images, and branding visuals. Clean, conversion-focused designs that stand out.</p>
             </div>
         </div>
     </section>
 
-    <section id="about" class="about-section section-padding">
-        <div class="about-image" data-aos="fade-right">
-            <img src="/img/aboout0.1.png" loading="lazy">
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="section-header">
+            <h2>Simple, Transparent Pricing</h2>
+            <p>Scalable plans that grow with your business. No long-term lock-in.</p>
         </div>
-        <div class="about-content" data-aos="fade-left">
-            <h2>About VeloKlean</h2>
-            <p><strong>VeloKlean.services combines human expertise with smart automation to deliver exceptional cleaning experiences.</strong></p>
-            <p>We’re redefining local cleaning by blending convenience, technology, and trust — making clean living accessible and effortless. Our cleaners are meticulously vetted, trained in the latest techniques, and equipped with our proprietary tech to ensure a consistent, flawless clean every single time. We don't just clean; we optimize your environment.</p>
-            <a href="#contact" class="btn primary-cta">Learn More</a>
-        </div>
-    </section>
-
-    <section id="locations" class="section-padding light-gray-bg">
-        <h2 data-aos="fade-up">Serving Major Cities Across Canada & USA</h2>
-        
-        <div class="locations-grid">
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="100"><i class="fas fa-map-marker-alt"></i> Toronto</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-map-marker-alt"></i> Vancouver</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="300"><i class="fas fa-map-marker-alt"></i> Montreal</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-map-marker-alt"></i> Calgary</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="500"><i class="fas fa-map-marker-alt"></i> Edmonton</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="600"><i class="fas fa-map-marker-alt"></i> Ottawa</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="700"><i class="fas fa-map-marker-alt"></i> New York</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="800"><i class="fas fa-map-marker-alt"></i> Los Angeles</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="900"><i class="fas fa-map-marker-alt"></i> Chicago</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="1000"><i class="fas fa-map-marker-alt"></i> Dallas</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="1100"><i class="fas fa-map-marker-alt"></i> Seattle</div>
-            <div class="location-card" data-aos="zoom-in" data-aos-delay="1200"><i class="fas fa-map-marker-alt"></i> Miami</div>
-        </div>
-    </section>
-
-   <section id="reviews" class="section-padding">
-    <h2 data-aos="fade-up">What Our Clients Say</h2>
-
-    <div class="reviews-stats" data-aos="fade-up" data-aos-delay="50">
-        <div class="stat-item">
-            <span id="customer-count" class="count-number">0</span><span class="count-suffix">+</span>
-            <p class="stat-label">Satisfied Customers</p>
-        </div>
-        <div class="stat-item">
-            <div class="stars rating-display">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-            </div>
-            <p class="stat-label">4.5 Star Rating</p>
-        </div>
-    </div>
-    <div class="privacy-snackbar" data-aos="fade-in" data-aos-delay="300">
-        <i class="fas fa-user-secret"></i> 
-        Note: Profile images are blurred for our clients' privacy.
-    </div>
-    <div class="reviews-carousel-container" data-aos="fade-up" data-aos-delay="100">
-        <div class="reviews-carousel">
-            <div class="review-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                </div>
-                <p>“VeloKlean made my condo shine like new — quick, friendly, and professional. The app makes booking a breeze.”</p>
-                <div class="client-info">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjE4MzZ8MHwxfHNlYXJjaHwzfHdlbGwlMjByZXZpZXdlZCUyMHdvbWFuJTIwaGVhZHNob3R8ZW58MHx8fHwxNzAwNDM3MzE0fDA&ixlib=rb-4.0.3&q=80&w=80" alt="Jessica Profile" class="profile-pic profile-pic-blurred">
-                    <span><strong>Jessica L.</strong>, Toronto</span>
-                </div>
-            </div>
-            <div class="review-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p>“The deep cleaning for our office was flawless. The team was fast and the automation updates were super helpful.”</p>
-                <div class="client-info">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjE4MzZ8MHwxfHNlYXJjaHwzfHdlbGwlMjByZXZpZXdlZCUyMG1hbiUyMGhlYWRzaG90fGVufDB8fHx8MTcwMDQzNzMxNHww&ixlib=rb-4.0.3&q=80&w=80" alt="Mark Profile" class="profile-pic profile-pic-blurred">
-                    <span><strong>Mark R.</strong>, New York</span>
-                </div>
-            </div>
-            <div class="review-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p>“We used VeloKlean for a post-construction cleanup. Absolute life-savers! Highly recommend their professionalism and tech integration.”</p>
-                <div class="client-info">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjE4MzZ8MHwxfHNlYXJjaHwyMHx8d2VsbCUyMHJldmlld2VkJTIwd29tYW4lMjBoZWFkc2hvdHxlbnwwfHx8fDE3MDA0MzczMTR8MA&ixlib=rb-4.0.3&q=80&w=80" alt="Sarah Profile" class="profile-pic profile-pic-blurred">
-                    <span><strong>Sarah J.</strong>, Seattle</span>
-                </div>
-            </div>
-            <div class="review-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p>“Exceptional carpet cleaning! They were on time and their equipment is clearly state-of-the-art. Truly premium service.”</p>
-                <div class="client-info">
-                    <img src="https://images.unsplash.com/photo-1499951360471-41779670005d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjE4MzZ8MHwxfHNlYXJjaHwxNXx8d2VsbCUyMHJldmlld2VkJTIwbWFuJTIwaGVhZHNob3R8ZW58MHx8fHwxNzAwNDM3MzE0fDA&ixlib=rb-4.0.3&q=80&w=80" alt="Kevin Profile" class="profile-pic profile-pic-blurred">
-                    <span><strong>Kevin T.</strong>, Los Angeles</span>
-                </div>
-            </div>
-
-            <div class="review-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                </div>
-                <p>“The customer service is outstanding, and the cleaners are always on time and super polite. Highly reliable.”</p>
-                <div class="client-info">
-                    <img src="https://images.unsplash.com/photo-1557053910-bc2573215951?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjE4MzZ8MHwxfHNlYXJjaHwxNHx8cmV2aWV3ZWR3b21hbiUyMGhlYWRzaG90fGVufDB8fHx8MTcwNDQxNTI4NHww&ixlib=rb-4.0.3&q=80&w=80" alt="Maria Profile" class="profile-pic profile-pic-blurred">
-                    <span><strong>Maria V.</strong>, Vancouver</span>
-                </div>
-            </div>
-
-            <div class="review-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p>“I love the tech check-ins! It made scheduling and payment seamless. The best commercial cleaning we've ever hired.”</p>
-                <div class="client-info">
-                    <img src="https://images.unsplash.com/photo-1506794778202-dfa929d66144?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjE4MzZ8MHwxfHNlYXJjaHwxMnx8cmV2aWV3ZWRtYW4lMjBoZWFkc2hvdHxlbnwwfHx8fDE3MDQ0MTU0OTZ8MA&ixlib=rb-4.0.3&q=80&w=80" alt="Daniel Profile" class="profile-pic profile-pic-blurred">
-                    <span><strong>Daniel P.</strong>, Chicago</span>
-                </div>
-            </div>
-            
-            <div class="review-card">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                </div>
-                <p>“Used the move-out service and got my full deposit back! They were meticulous in every corner. Thank you, VeloKlean!”</p>
-                <div class="client-info">
-                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjE4MzZ8MHwxfHNlYXJjaHwxOXx8cmV2aWV3ZWRtYW4lMjBoZWFkc2hvdHxlbnwwfHx8fDE3MDQ0MTU0OTZ8MA&ixlib=rb-4.0.3&q=80&w=80" alt="Alex Profile" class="profile-pic profile-pic-blurred">
-                    <span><strong>Alex Z.</strong>, Dallas</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-    
-   <section id="contact" class="section-padding contact-section gradient-bg">
-    <div class="contact-card" data-aos="zoom-in-up">
-        <h2>Get Your Free Quote</h2>
-        <p class="section-subtitle">Fill out the form below and our team will reach out within minutes.</p>
-
-        <div id="submission-loader" class="hidden">
-            <div class="loader-spinner"></div>
-            <p>Processing request...</p>
-        </div>
-        <form id="quote-form" name="submit-to-google-sheet">
-            <div class="form-grid">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="tel" name="phone" placeholder="Phone Number" required>
-                <input type="text" name="city" placeholder="City" required>
-                <select name="service" required>
-                    <option value="" disabled selected>Select Service Type</option>
-                    <option value="Home Deep Cleaning">Home Deep Cleaning</option>
-                    <option value="Office / Commercial Cleaning">Office / Commercial Cleaning</option>
-                    <option value="Move-In / Move-Out Cleaning">Move-In / Move-Out Cleaning</option>
-                    <option value="Other">Other (Please specify in message)</option>
-                </select>
-            </div>
-            <textarea name="message" rows="4" placeholder="Briefly describe your cleaning needs..."></textarea>
-            <button type="submit" id="submitb" class="cta-button submit-btn">Request Quote</button>
-        </form>
-        
-        <div id="success-message" class="hidden">
-            <i class="fas fa-check-circle success-icon"></i>
-            <p>Thank you! Your quote request has been sent. We'll be in touch soon.</p>
-        </div>
-    </div>
-</section>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-brand">
-                <a href="#" class="logo"><i class="fas fa-tint"></i> VeloKlean</a>
-                <p class="tagline">Smart Cleaning. Human Touch.</p>
-            </div>
-            
-            <div class="footer-links">
-                <h4>Quick Links</h4>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Setup Cost</h3>
+                <div class="price">One-Time</div>
                 <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Our Services</a></li>
-                    <li><a href="#reviews">Client Reviews</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="/Terms_of_Service.html">Terms of service</a></li>
-                    <li><a href="/privacy.html">Privacy Policy</a></li>
-                   
+                    <li>Complete system setup</li>
+                    <li>Integration with your tools</li>
+                    <li>Custom workflow design</li>
+                    <li>Training & documentation</li>
                 </ul>
             </div>
-            
-            <div class="footer-social">
-                <h4>Connect</h4>
-                <div class="social-icons">
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
-                </div>
+            <div class="pricing-card featured">
+                <h3>Monthly Management</h3>
+                <div class="price">Recurring</div>
+                <ul>
+                    <li>Ongoing support & maintenance</li>
+                    <li>Performance monitoring</li>
+                    <li>Regular optimization</li>
+                    <li>Priority assistance</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <h3>Custom Plans</h3>
+                <div class="price">Flexible</div>
+                <ul>
+                    <li>Tailored to your needs</li>
+                    <li>Scale as you grow</li>
+                    <li>Enterprise solutions</li>
+                    <li>Dedicated account manager</li>
+                </ul>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 VeloKlean. All rights reserved.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2>About Veloklean</h2>
+            <p>Your automation partner for smarter business operations</p>
+        </div>
+        <div class="about-content">
+            <p>At Veloklean, we believe businesses should focus on what they do best — serving their customers. That's why we handle the repetitive work through intelligent automation.</p>
+            <p>We specialize in helping restaurants, local businesses, and small brands automate their customer conversations across WhatsApp, email, and calls. Our automation-first approach helps you save time, reduce errors, and increase conversions effortlessly.</p>
+            <p>From automated order taking to smart CRM workflows, we build systems that are reliable, simple, and designed to scale with your growth.</p>
+            <div class="about-founder">
+                <p><strong>Founded by Bhuvnesh</strong>, Veloklean is committed to making world-class automation accessible to businesses of all sizes across India and globally.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <div class="section-header">
+            <h2>What Our Clients Say</h2>
+            <p>Real results from real businesses</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Veloklean transformed how we handle customer orders. WhatsApp automation alone saved us 10+ hours every week. Highly recommended!"</p>
+                <div class="reviewer">Rajesh Sharma</div>
+                <div class="reviewer-role">Restaurant Owner, Mumbai</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"The email automation setup was seamless. Our follow-up rate increased by 60% and we're closing more deals than ever before."</p>
+                <div class="reviewer">Priya Patel</div>
+                <div class="reviewer-role">Local Business Owner, Pune</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Professional service, quick turnaround, and excellent support. The designs and automation both exceeded our expectations."</p>
+                <div class="reviewer">Amit Kumar</div>
+                <div class="reviewer-role">Small Brand Founder, Delhi</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2>Let's Get Started</h2>
+            <p>Reach out to us through your preferred channel</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-methods">
+                <a href="https://wa.me/918920419130" class="contact-item">
+                    <span class="contact-icon">💬</span>
+                    <div>
+                        <strong>WhatsApp</strong><br>
+                        Message us instantly
+                    </div>
+                </a>
+                <a href="https://instagram.com/bhuvneshraghav0" class="contact-item">
+                    <span class="contact-icon">📸</span>
+                    <div>
+                        <strong>Instagram</strong><br>
+                        @veloklean
+                    </div>
+                </a>
+                <a href="mailto:team@veloklean.services" class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div>
+                        <strong>Email</strong><br>
+                        team@veloklean.services
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">Veloklean</div>
+            <div class="footer-description">Automation Agency + Digital Design Services</div>
+            <div class="footer-links">
+                <a href="https://wa.me/918920419130" title="WhatsApp">💬</a>
+                <a href="https://instagram.com/bhuvneshraghav0" title="Instagram">📸</a>
+                <a href="mailto:team@veloklean.services" title="Email">📧</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Veloklean. All rights reserved.</p>
+                <p>veloklean.services</p>
+            </div>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init({
-        duration: 800, // Duration of animation
-        once: true,    // Whether animation should happen only once - default
-      });
+        // Smooth scroll animation on load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll(
+                '.section-header, .service-card, .pricing-card, .about-content, .review-card, .contact-content'
+            );
+            
+            animatedElements.forEach((el, index) => {
+                el.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(el);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to nav on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
