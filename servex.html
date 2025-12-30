@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servex - Smart WhatsApp Automation for Restaurants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #F7F9FC;
+            color: #0F172A;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(247, 249, 252, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(79, 108, 255, 0.08);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(79, 108, 255, 0.12);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4F6CFF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #0F172A;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4F6CFF;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: #4F6CFF;
+            color: white;
+            box-shadow: 0 4px 20px rgba(79, 108, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #3D56E6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(79, 108, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #4F6CFF;
+            border: 2px solid #4F6CFF;
+        }
+
+        .btn-outline:hover {
+            background: #EEF2FF;
+            transform: translateY(-2px);
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 18px;
+            border-radius: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            opacity: 0;
+            animation: fadeUpIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeUpIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: #0F172A;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .subheadline {
+            font-size: 20px;
+            color: #64748B;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .highlight-points {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0 40px;
+        }
+
+        .highlight-point {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #22C55E;
+            font-weight: 600;
+        }
+
+        .highlight-point::before {
+            content: "✓";
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #22C55E;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .hero-visual {
+            margin-top: 60px;
+            opacity: 0;
+            animation: fadeUpIn 0.8s ease 0.3s forwards;
+        }
+
+        .phone-mockup {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(79, 108, 255, 0.15);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #0F172A;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            background: white;
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(79, 108, 255, 0.1);
+            text-align: center;
+        }
+
+        .trust-points {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .trust-point {
+            font-size: 18px;
+            font-weight: 600;
+            color: #4F6CFF;
+        }
+
+        .trust-note {
+            margin-top: 30px;
+            color: #64748B;
+            font-style: italic;
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 30px rgba(79, 108, 255, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(79, 108, 255, 0.15);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: #4F6CFF;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(79, 108, 255, 0.3);
+        }
+
+        .step-card h3 {
+            margin: 30px 0 15px;
+            font-size: 22px;
+            color: #0F172A;
+        }
+
+        .step-card p {
+            color: #64748B;
+            line-height: 1.7;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(79, 108, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(79, 108, 255, 0.15);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #0F172A;
+        }
+
+        .feature-card p {
+            color: #64748B;
+            line-height: 1.7;
+        }
+
+        /* Use Cases */
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .use-case-card {
+            background: linear-gradient(135deg, #4F6CFF 0%, #3D56E6 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 35px;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(79, 108, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(79, 108, 255, 0.3);
+        }
+
+        /* Pricing */
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: 0 10px 40px rgba(79, 108, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(79, 108, 255, 0.2);
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #0F172A;
+        }
+
+        .price {
+            font-size: 42px;
+            font-weight: 700;
+            color: #4F6CFF;
+            margin: 20px 0;
+        }
+
+        .pricing-details {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-details li {
+            padding: 12px 0;
+            color: #64748B;
+            border-bottom: 1px solid #EEF2FF;
+        }
+
+        .pricing-details li::before {
+            content: "✓";
+            color: #22C55E;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 30px rgba(79, 108, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 12px 40px rgba(79, 108, 255, 0.12);
+        }
+
+        .faq-item h3 {
+            font-size: 20px;
+            color: #0F172A;
+            margin-bottom: 12px;
+        }
+
+        .faq-item p {
+            color: #64748B;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #4F6CFF 0%, #3D56E6 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 40px;
+            border-radius: 24px;
+        }
+
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #22C55E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 30px rgba(34, 197, 94, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 40px rgba(34, 197, 94, 0.5);
+        }
+
+        .whatsapp-float::before {
+            content: "💬";
+            font-size: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0F172A;
+            color: white;
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #4F6CFF;
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            color: #64748B;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero .subheadline {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .trust-section {
+                padding: 40px 20px;
+            }
+
+            .phone-mockup {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">Servex</a>
+                <ul class="nav-links">
+                    <li><a href="#how-it-works">How it Works</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#use-cases">Use Cases</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#" class="btn btn-primary" onclick="openWhatsApp()">WhatsApp Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Automate Orders, FAQs & Google Reviews on WhatsApp</h1>
+            <p class="subheadline">Servex helps restaurants handle WhatsApp orders like a human, manage everything from one simple app, and grow reviews automatically.</p>
+            
+            <div class="highlight-points">
+                <div class="highlight-point">24x7 WhatsApp ordering</div>
+                <div class="highlight-point">Google Sheet powered</div>
+                <div class="highlight-point">No technical setup required</div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary btn-large" onclick="openWhatsApp()">Get Free WhatsApp Demo</a>
+                <a href="#how-it-works" class="btn btn-outline btn-large">See How It Works</a>
+            </div>
+
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop" alt="WhatsApp Automation" style="width: 100%; border-radius: 16px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section id="trust">
+        <div class="container">
+            <div class="trust-section">
+                <h2>Built for Indian Food Businesses</h2>
+                <div class="trust-points">
+                    <span class="trust-point">Cafes</span>
+                    <span class="trust-point">Pizza Shops</span>
+                    <span class="trust-point">Cloud Kitchens</span>
+                    <span class="trust-point">Fast-Food Outlets</span>
+                    <span class="trust-point">Healthy Food Brands</span>
+                </div>
+                <p class="trust-note">No complex software. Works with simple things you already understand.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How Servex Works</h2>
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Customer Chats on WhatsApp</h3>
+                    <p>Customers message your WhatsApp like normal.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>AI Answers & Takes Orders</h3>
+                    <p>Bot shares menu, answers FAQs, confirms orders automatically.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Orders Sync to Your App</h3>
+                    <p>All orders appear instantly in your Servex dashboard.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Delivered → Review Request</h3>
+                    <p>After delivery, customers receive your Google review link.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">Everything You Need, Nothing Extra</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>WhatsApp Order Automation</h3>
+                    <p>Human-like conversations that confirm orders automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Menu Management</h3>
+                    <p>Add, edit or delete items directly from a simple App.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Order Tracking</h3>
+                    <p>Mark orders as Delivered or Cancelled in one tap.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>FAQ Control</h3>
+                    <p>Train your bot using simple question-answer forms.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Google Review Boost</h3>
+                    <p>Auto-send review links after successful delivery.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>No App Install Needed</h3>
+                    <p>Works as a PWA. Opens instantly on mobile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section id="use-cases">
+        <div class="container">
+            <h2 class="section-title">Who Is Servex Perfect For?</h2>
+            <div class="use-cases">
+                <div class="use-case-card">Restaurants with daily WhatsApp messages</div>
+                <div class="use-case-card">Cafes receiving repetitive queries</div>
+                <div class="use-case-card">Pizza shops handling peak-hour overload</div>
+                <div class="use-case-card">Cloud kitchens managing delivery volume</div>
+                <div class="use-case-card">Food brands growing Google reviews</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple & Transparent Pricing</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Setup Fee</h3>
+                    <div class="price">₹3,999</div>
+                    <ul class="pricing-details">
+                        <li>Bot setup</li>
+                        <li>Menu & FAQ configuration</li>
+                        <li>Google Sheet integration</li>
+                        <li>Demo & onboarding</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <h3>Monthly Subscription</h3>
+                    <div class="price">₹1,999<span style="font-size: 18px; color: #64748B;">/month</span></div>
+                    <ul class="pricing-details">
+                        <li>WhatsApp automation</li>
+                        <li>Hosting & maintenance</li>
+                        <li>Order & menu management app</li>
+                        <li>Ongoing support</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-primary btn-large" onclick="openWhatsApp()">Start with WhatsApp Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Do I need technical knowledge?</h3>
+                    <p>No. Everything is managed through a simple app.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does it work with Google Sheets?</h3>
+                    <p>Yes. Menu, orders and FAQs sync directly with Sheets.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I update menu anytime?</h3>
+                    <p>Yes. Changes reflect instantly on WhatsApp.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is this suitable for fully customized orders?</h3>
+                    <p>Servex works best with standard or semi-standard menus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-section">
+                <h2>Talk to Us on WhatsApp</h2>
+                <p>Get a free 3-minute demo video or book a live call.</p>
+                <a href="#" class="btn btn-primary btn-large" onclick="openWhatsApp()" style="background: white; color: #4F6CFF;">Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© Servex. WhatsApp Automation for Restaurants.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
+            </div>
+            <p class="footer-note">Built for Indian food businesses.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="whatsapp-float" onclick="openWhatsApp()"></div>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // WhatsApp function
+        function openWhatsApp() {
+            window.open('https://wa.me/+918920419130?text=Hi! I want a demo of Servex', '_blank');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
