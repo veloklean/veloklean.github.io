@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scan WhatsApp QR</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .box {
+      background: #020617;
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 0 20px rgba(0,0,0,.4);
+    }
+
+    img {
+      width: 260px;
+      height: 260px;
+      margin-top: 16px;
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      display: none;
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #22c55e;
+      font-weight: bold;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .status {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Scan WhatsApp QR</h2>
+  <p>WhatsApp → Linked Devices</p>
+
+  <img id="qr" alt="QR Code" />
+
+  <div class="status" id="status">
+    Click the button to generate QR
+  </div>
+
+  <button id="btn" onclick="loadQR()">Generate QR</button>
+</div>
+
+<script>
+let loading = false;
+
+async function loadQR() {
+  if (loading) return;
+
+  const btn = document.getElementById("btn");
+  const status = document.getElementById("status");
+  const qrImg = document.getElementById("qr");
+
+  loading = true;
+  btn.disabled = true;
+  status.innerText = "Generating QR...";
+  qrImg.style.display = "none";
+
+  try {
+    const res = await fetch(
+      "https://n8n.phishnix.site/webhook/evolution/qr",
+      { cache: "no-store" }
+    );
+
+    const raw = await res.json();
+    console.log("QR response:", raw);
+
+    // 🔥 FIX: webhook returns ARRAY
+    const data = Array.isArray(raw) ? raw[0] : raw;
+
+    if (!data || !data.qr) {
+      status.innerText = "QR not available";
+      return;
+    }
+
+    // ✅ handle both raw base64 and data:image format
+    qrImg.src = data.qr.startsWith("data:image")
+      ? data.qr
+      : "data:image/png;base64," + data.qr;
+
+    qrImg.style.display = "block";
+    status.innerText = "Scan the QR using WhatsApp";
+
+  } catch (err) {
+    console.error("QR error:", err);
+    status.innerText = "Failed to load QR";
+  } finally {
+    loading = false;
+    btn.disabled = false;
+  }
+}
+</script>
+
+</body>
+</html>
