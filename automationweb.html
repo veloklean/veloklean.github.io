@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Systems for Dubai Home Maintenance | Bhuvnesh Raghav</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A7EA4;
+            --primary-dark: #065A75;
+            --accent: #14B8A6;
+            --bg: #FAFBFC;
+            --surface: #FFFFFF;
+            --text: #1A2332;
+            --text-light: #64748B;
+            --border: #E2E8F0;
+            --shadow-sm: 0 1px 3px rgba(10, 126, 164, 0.04), 0 1px 2px rgba(10, 126, 164, 0.03);
+            --shadow-md: 0 4px 6px -1px rgba(10, 126, 164, 0.06), 0 2px 4px -1px rgba(10, 126, 164, 0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(10, 126, 164, 0.08), 0 4px 6px -2px rgba(10, 126, 164, 0.04);
+            --shadow-xl: 0 20px 25px -5px rgba(10, 126, 164, 0.1), 0 10px 10px -5px rgba(10, 126, 164, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.65rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #00000000 0%, #00000000 100%);
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 2;
+    
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(0, 0, 0, 0.427) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(1, 13, 11, 0.703) 0%, transparent 50%),
+        url("bg.gif");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    
+}
+
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            max-width: 550px;
+            opacity: 1;
+            animation: fadeInRight 1s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateY(-50%) translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0);
+            }
+        }
+
+        .hero-visual {
+            background: rgb(0, 0, 0);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border);
+        }
+
+        .hero-visual svg {
+            width: 100%;
+            height: auto;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(10, 125, 164, 0.393);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(10, 125, 164, 0.734);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: rgb(255, 255, 255);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgb(255, 255, 255);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Problem Cards */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: var(--surface);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .problem-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .problem-card:nth-child(2) { transition-delay: 0.1s; }
+        .problem-card:nth-child(3) { transition-delay: 0.2s; }
+        .problem-card:nth-child(4) { transition-delay: 0.3s; }
+
+        .problem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(10, 126, 164, 0.1), rgba(20, 184, 166, 0.1));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .problem-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .solution-visual {
+            background: linear-gradient(135deg, rgba(10, 126, 164, 0.05), rgba(20, 184, 166, 0.05));
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .solution-visual svg {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+        }
+
+        .solution-item {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .solution-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .solution-item:nth-child(2) { transition-delay: 0.1s; }
+        .solution-item:nth-child(3) { transition-delay: 0.2s; }
+        .solution-item:nth-child(4) { transition-delay: 0.3s; }
+        .solution-item:nth-child(5) { transition-delay: 0.4s; }
+        .solution-item:nth-child(6) { transition-delay: 0.5s; }
+
+        .solution-item:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateX(8px);
+        }
+
+        .solution-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .step {
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+        }
+
+        .step.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .step:nth-child(2) { transition-delay: 0.2s; }
+        .step:nth-child(3) { transition-delay: 0.4s; }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            border: 2px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .pricing-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pricing-card:nth-child(2) { transition-delay: 0.15s; }
+        .pricing-card:nth-child(3) { transition-delay: 0.3s; }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 100%);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pricing-icon {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .features-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .maintenance-note {
+            background: rgba(10, 126, 164, 0.05);
+            border: 1px solid rgba(10, 126, 164, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .maintenance-note h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        /* ROI Calculator */
+        .calculator {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            max-width: 700px;
+            margin: 3rem auto;
+            border: 1px solid var(--border);
+        }
+
+        .input-group {
+            margin-bottom: 2rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10, 126, 164, 0.1);
+        }
+
+        .results {
+            background: linear-gradient(135deg, rgba(10, 126, 164, 0.08), rgba(20, 184, 166, 0.08));
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(10, 126, 164, 0.2);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .result-label {
+            font-weight: 500;
+        }
+
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Why Work With Me */
+        .why-section {
+            background: var(--surface);
+        }
+
+        .why-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(10, 126, 164, 0.1), rgba(20, 184, 166, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-placeholder svg {
+            width: 70%;
+            height: 70%;
+        }
+
+        .why-points {
+            list-style: none;
+        }
+
+        .why-points li {
+            padding: 1.25rem 0;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .why-points li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite reverse;
+        }
+
+        .cta-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section .btn {
+            background: white;
+            color: var(--primary);
+            font-size: 1.15rem;
+            padding: 1.25rem 2.5rem;
+        }
+
+        .cta-section .btn:hover {
+            background: var(--bg);
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-image {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                width: 100%;
+                max-width: 100%;
+                margin-top: 3rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .why-content {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid,
+            .problem-grid,
+            .solution-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container,
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">BR Automation</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#problems">Problems</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#roi">ROI Calculator</a></li>
+                <li><a href="#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">🇦🇪 Dubai Home Maintenance Automation</span>
+                <h1>Turn Missed Calls Into Booked Jobs</h1>
+                <p>Automation systems built for Dubai home maintenance companies to capture, qualify, and manage leads automatically.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Book Free Strategy Call</a>
+                    <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problems">
+        <div class="container">
+            <div class="section-header">
+                <h2>Most Home Maintenance Companies Lose Jobs Because...</h2>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="6" width="24" height="28" rx="3" fill="#0A7EA4" opacity="0.2"/>
+                            <rect x="10" y="8" width="20" height="24" rx="2" fill="white" stroke="#0A7EA4" stroke-width="1.5"/>
+                            <circle cx="20" cy="10" r="1" fill="#0A7EA4"/>
+                            <rect x="13" y="14" width="10" height="3" rx="1.5" fill="#14B8A6"/>
+                            <rect x="15" y="19" width="10" height="3" rx="1.5" fill="#0A7EA4" opacity="0.3"/>
+                            <rect x="13" y="24" width="12" height="3" rx="1.5" fill="#14B8A6"/>
+                            <circle cx="30" cy="28" r="6" fill="#FF4444"/>
+                            <text x="30" y="32" text-anchor="middle" fill="white" font-size="10" font-weight="bold">!</text>
+                        </svg>
+                    </div>
+                    <h3>Missed WhatsApp Messages</h3>
+                    <p>Leads message you at night or weekends. By the time you reply, they've hired someone else.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="10" width="28" height="20" rx="2" fill="white" stroke="#0A7EA4" stroke-width="2"/>
+                            <line x1="10" y1="16" x2="18" y2="16" stroke="#14B8A6" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="10" y1="20" x2="22" y2="20" stroke="#0A7EA4" opacity="0.3" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="10" y1="24" x2="16" y2="24" stroke="#0A7EA4" opacity="0.3" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="28" cy="20" r="8" fill="#0A7EA4" opacity="0.2"/>
+                            <path d="M 23 20 L 28 20 L 28 15" stroke="#0A7EA4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>No Structured Follow-Up</h3>
+                    <p>You send a quote and hope they reply. No automated reminders or follow-up sequences.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="8" width="12" height="16" rx="1.5" fill="white" stroke="#0A7EA4" stroke-width="1.5"/>
+                            <line x1="7" y1="12" x2="15" y2="12" stroke="#14B8A6" stroke-width="1"/>
+                            <line x1="7" y1="15" x2="13" y2="15" stroke="#0A7EA4" opacity="0.3" stroke-width="1"/>
+                            <line x1="7" y1="18" x2="14" y2="18" stroke="#0A7EA4" opacity="0.3" stroke-width="1"/>
+                            
+                            <rect x="20" y="14" width="12" height="16" rx="1.5" fill="white" stroke="#0A7EA4" stroke-width="1.5"/>
+                            <line x1="22" y1="18" x2="30" y2="18" stroke="#14B8A6" stroke-width="1"/>
+                            <line x1="22" y1="21" x2="28" y2="21" stroke="#0A7EA4" opacity="0.3" stroke-width="1"/>
+                            <line x1="22" y1="24" x2="29" y2="24" stroke="#0A7EA4" opacity="0.3" stroke-width="1"/>
+                            
+                            <line x1="16" y1="18" x2="20" y2="18" stroke="#FF4444" stroke-width="1.5" stroke-dasharray="2,2"/>
+                            <text x="20" y="9" fill="#FF4444" font-size="8" font-weight="bold">DISCONNECTED</text>
+                        </svg>
+                    </div>
+                    <h3>No CRM Tracking</h3>
+                    <p>Lead information is scattered across WhatsApp, phone, and sticky notes. Nothing is organized.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="15" r="5" fill="white" stroke="#0A7EA4" stroke-width="1.5"/>
+                            <path d="M 7 25 Q 7 20 12 20 Q 17 20 17 25" stroke="#0A7EA4" stroke-width="1.5" fill="none"/>
+                            
+                            <circle cx="28" cy="15" r="5" fill="white" stroke="#0A7EA4" stroke-width="1.5"/>
+                            <path d="M 23 25 Q 23 20 28 20 Q 33 20 33 25" stroke="#0A7EA4" stroke-width="1.5" fill="none"/>
+                            
+                            <line x1="17" y1="15" x2="23" y2="15" stroke="#0A7EA4" stroke-width="1.5" stroke-linecap="round"/>
+                            
+                            <circle cx="20" cy="32" r="4" fill="#FF4444"/>
+                            <line x1="18" y1="32" x2="22" y2="32" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="20" y1="30" x2="20" y2="34" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Manual Coordination</h3>
+                    <p>You manually assign technicians and track jobs. It's time-consuming and error-prone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" style="background: var(--surface);">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Automation System That Fixes This</h2>
+                <p class="section-subtitle">Not just a website. A complete automation system that runs your business while you sleep.</p>
+            </div>
+            
+            <div class="solution-visual">
+                <svg viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- WhatsApp -->
+                    <circle cx="100" cy="150" r="50" fill="#25D366" opacity="0.2"/>
+                    <circle cx="100" cy="150" r="40" fill="#25D366"/>
+                    <path d="M 85 145 Q 85 135 95 135 L 105 135 Q 115 135 115 145 L 115 155 Q 115 165 105 165 L 100 165 L 95 170 L 95 165 Q 85 165 85 155 Z" fill="white"/>
+                    <text x="100" y="200" text-anchor="middle" fill="#1A2332" font-size="14" font-weight="600">WhatsApp</text>
+                    
+                    <!-- Arrow 1 -->
+                    <line x1="160" y1="150" x2="220" y2="150" stroke="#14B8A6" stroke-width="3" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1.5s" repeatCount="indefinite"/>
+                    </line>
+                    <polygon points="220,150 210,145 210,155" fill="#14B8A6"/>
+                    
+                    <!-- AI Processing -->
+                    <rect x="230" y="100" width="140" height="100" rx="15" fill="#0A7EA4" opacity="0.1" stroke="#0A7EA4" stroke-width="2"/>
+                    <circle cx="300" cy="135" r="15" fill="#0A7EA4"/>
+                    <path d="M 295 135 L 300 140 L 305 130" stroke="white" stroke-width="2" fill="none"/>
+                    <text x="300" y="170" text-anchor="middle" fill="#0A7EA4" font-size="16" font-weight="700">AI Auto-Reply</text>
+                    <text x="300" y="185" text-anchor="middle" fill="#64748B" font-size="11">Instant Response</text>
+                    <text x="300" y="235" text-anchor="middle" fill="#1A2332" font-size="14" font-weight="600">Qualification</text>
+                    
+                    <!-- Arrow 2 -->
+                    <line x1="380" y1="150" x2="440" y2="150" stroke="#14B8A6" stroke-width="3" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
+                    </line>
+                    <polygon points="440,150 430,145 430,155" fill="#14B8A6"/>
+                    
+                    <!-- CRM -->
+                    <rect x="450" y="100" width="140" height="100" rx="15" fill="#14B8A6" opacity="0.1" stroke="#14B8A6" stroke-width="2"/>
+                    <rect x="470" y="120" width="30" height="3" rx="1.5" fill="#14B8A6"/>
+                    <rect x="470" y="130" width="45" height="2" rx="1" fill="#14B8A6" opacity="0.5"/>
+                    <rect x="470" y="137" width="40" height="2" rx="1" fill="#14B8A6" opacity="0.5"/>
+                    <rect x="470" y="144" width="35" height="2" rx="1" fill="#14B8A6" opacity="0.5"/>
+                    <rect x="470" y="160" width="30" height="3" rx="1.5" fill="#14B8A6"/>
+                    <rect x="470" y="170" width="45" height="2" rx="1" fill="#14B8A6" opacity="0.5"/>
+                    <rect x="470" y="177" width="40" height="2" rx="1" fill="#14B8A6" opacity="0.5"/>
+                    <text x="520" y="235" text-anchor="middle" fill="#1A2332" font-size="14" font-weight="600">CRM Database</text>
+                    
+                    <!-- Arrow 3 -->
+                    <line x1="600" y1="150" x2="660" y2="150" stroke="#14B8A6" stroke-width="3" stroke-dasharray="5,5">
+                        <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1.5s" begin="1s" repeatCount="indefinite"/>
+                    </line>
+                    <polygon points="660,150 650,145 650,155" fill="#14B8A6"/>
+                    
+                    <!-- Technician Assignment -->
+                    <circle cx="720" cy="150" r="50" fill="#0A7EA4" opacity="0.2"/>
+                    <circle cx="720" cy="150" r="40" fill="#0A7EA4"/>
+                    <circle cx="720" cy="142" r="12" fill="white"/>
+                    <path d="M 710 160 Q 710 155 715 155 L 725 155 Q 730 155 730 160 L 730 165" stroke="white" stroke-width="3" fill="none"/>
+                    <text x="720" y="220" text-anchor="middle" fill="#1A2332" font-size="14" font-weight="600">Auto-Assign</text>
+                    
+                    <!-- Status indicators -->
+                    <g opacity="0.7">
+                        <circle cx="300" cy="40" r="5" fill="#25D366">
+                            <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="310" y="45" fill="#64748B" font-size="11">Processing...</text>
+                    </g>
+                </svg>
+            </div>
+            
+            <div class="solution-grid">
+                <div class="solution-item">
+                    <h3>WhatsApp Auto Replies</h3>
+                    <p>Instant responses to every message. Capture leads 24/7 even when you're busy with jobs.</p>
+                </div>
+                <div class="solution-item">
+                    <h3>Lead → CRM Automation</h3>
+                    <p>Every lead automatically logged, tagged, and organized in your CRM. No manual data entry.</p>
+                </div>
+                <div class="solution-item">
+                    <h3>Technician Auto Assignment</h3>
+                    <p>Jobs automatically assigned based on location, availability, and expertise. Smart routing system.</p>
+                </div>
+                <div class="solution-item">
+                    <h3>Quote Automation</h3>
+                    <p>Generate and send professional quotes automatically based on service type and requirements.</p>
+                </div>
+                <div class="solution-item">
+                    <h3>Missed Call Automation</h3>
+                    <p>Automatic SMS and WhatsApp follow-up when calls are missed. Never lose a lead again.</p>
+                </div>
+                <div class="solution-item">
+                    <h3>Review Booster System</h3>
+                    <p>Automated review requests after job completion. Build your reputation on autopilot.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p class="section-subtitle">Simple, automated, effective</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Lead Comes In</h3>
+                    <p>Through WhatsApp, phone call, or website inquiry. System captures all details automatically.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>System Qualifies & Assigns</h3>
+                    <p>Lead is qualified, categorized, and automatically assigned to the right technician based on availability.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Job Booked & Followed Up</h3>
+                    <p>Automated quote sent, reminders scheduled, and follow-up sequences activated. You just show up and do the job.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" style="background: var(--surface);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Automation System Packages</h2>
+                <p class="section-subtitle">One-time setup fee + monthly maintenance for ongoing optimization</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="25" cy="25" r="23" fill="#0A7EA4" opacity="0.1"/>
+                            <circle cx="25" cy="25" r="18" fill="#0A7EA4" opacity="0.2"/>
+                            <path d="M 25 10 L 28 20 L 38 20 L 30 27 L 33 37 L 25 31 L 17 37 L 20 27 L 12 20 L 22 20 Z" fill="#CD7F32"/>
+                        </svg>
+                    </div>
+                    <h3>Starter</h3>
+                    <div class="price">AED 1,500</div>
+                    <div class="price-label">Setup Fee</div>
+                    <ul class="features-list">
+                        <li><span class="check-icon">✓</span> WhatsApp auto reply</li>
+                        <li><span class="check-icon">✓</span> Lead to CRM automation</li>
+                        <li><span class="check-icon">✓</span> Basic booking flow</li>
+                        <li><span class="check-icon">✓</span> 1 reminder sequence</li>
+                        <li><span class="check-icon">✓</span> Ideal for small teams</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="25" cy="25" r="23" fill="#0A7EA4" opacity="0.15"/>
+                            <circle cx="25" cy="25" r="18" fill="#0A7EA4" opacity="0.25"/>
+                            <path d="M 25 10 L 28 20 L 38 20 L 30 27 L 33 37 L 25 31 L 17 37 L 20 27 L 12 20 L 22 20 Z" fill="#C0C0C0"/>
+                            <circle cx="35" cy="15" r="3" fill="#C0C0C0" opacity="0.6"/>
+                            <circle cx="15" cy="15" r="2" fill="#C0C0C0" opacity="0.4"/>
+                        </svg>
+                    </div>
+                    <h3>Growth</h3>
+                    <div class="price">AED 3,000</div>
+                    <div class="price-label">Setup Fee</div>
+                    <ul class="features-list">
+                        <li><span class="check-icon">✓</span> Everything in Starter</li>
+                        <li><span class="check-icon">✓</span> Technician auto assignment</li>
+                        <li><span class="check-icon">✓</span> Repeat service reminders</li>
+                        <li><span class="check-icon">✓</span> Follow-up automation</li>
+                        <li><span class="check-icon">✓</span> CRM dashboard</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-icon">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="25" cy="25" r="23" fill="#FFD700" opacity="0.15"/>
+                            <circle cx="25" cy="25" r="18" fill="#FFD700" opacity="0.25"/>
+                            <path d="M 25 10 L 28 20 L 38 20 L 30 27 L 33 37 L 25 31 L 17 37 L 20 27 L 12 20 L 22 20 Z" fill="#FFD700"/>
+                            <circle cx="35" cy="15" r="3" fill="#FFD700" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="15" cy="15" r="2.5" fill="#FFD700" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="40" cy="25" r="2" fill="#FFD700" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                    </div>
+                    <h3>Pro</h3>
+                    <div class="price">AED 5,000</div>
+                    <div class="price-label">Setup Fee</div>
+                    <ul class="features-list">
+                        <li><span class="check-icon">✓</span> Full workflow automation</li>
+                        <li><span class="check-icon">✓</span> Multi-agent CRM</li>
+                        <li><span class="check-icon">✓</span> Missed call automation</li>
+                        <li><span class="check-icon">✓</span> Quote automation</li>
+                        <li><span class="check-icon">✓</span> Analytics dashboard</li>
+                        <li><span class="check-icon">✓</span> 30 days priority support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%; text-align: center; margin-top: 1rem;">Get Started</a>
+                </div>
+            </div>
+
+            <div class="maintenance-note">
+                <h3>Monthly Maintenance: AED 500–1,000</h3>
+                <p>Includes ongoing support, system updates, workflow optimization, and performance monitoring. Your automation system improves over time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section id="roi">
+        <div class="container">
+            <div class="section-header">
+                <h2>Calculate Your Lost Revenue</h2>
+                <p class="section-subtitle">See how much money you're leaving on the table</p>
+            </div>
+            
+            <div class="solution-visual" style="margin-bottom: 2rem;">
+                <svg viewBox="0 0 600 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Dashboard mockup -->
+                    <rect x="50" y="30" width="500" height="190" rx="12" fill="white" stroke="#E2E8F0" stroke-width="2"/>
+                    
+                    <!-- Header -->
+                    <rect x="50" y="30" width="500" height="40" rx="12" fill="#0A7EA4" opacity="0.05"/>
+                    <text x="70" y="55" fill="#0A7EA4" font-size="16" font-weight="700">Revenue Analytics Dashboard</text>
+                    
+                    <!-- Metric Cards -->
+                    <rect x="70" y="90" width="140" height="60" rx="8" fill="#0A7EA4" opacity="0.1"/>
+                    <text x="85" y="110" fill="#64748B" font-size="11">Total Leads</text>
+                    <text x="85" y="135" fill="#0A7EA4" font-size="24" font-weight="700">328</text>
+                    
+                    <rect x="230" y="90" width="140" height="60" rx="8" fill="#FF4444" opacity="0.1"/>
+                    <text x="245" y="110" fill="#64748B" font-size="11">Missed Leads</text>
+                    <text x="245" y="135" fill="#FF4444" font-size="24" font-weight="700">98</text>
+                    <circle cx="355" cy="125" r="8" fill="#FF4444" opacity="0.3"/>
+                    <text x="355" y="129" text-anchor="middle" fill="white" font-size="10" font-weight="bold">!</text>
+                    
+                    <rect x="390" y="90" width="140" height="60" rx="8" fill="#14B8A6" opacity="0.1"/>
+                    <text x="405" y="110" fill="#64748B" font-size="11">Lost Revenue</text>
+                    <text x="405" y="135" fill="#14B8A6" font-size="20" font-weight="700">AED 49K</text>
+                    
+                    <!-- Chart bars -->
+                    <rect x="80" y="180" width="30" height="25" rx="3" fill="#0A7EA4" opacity="0.3"/>
+                    <rect x="130" y="165" width="30" height="40" rx="3" fill="#0A7EA4" opacity="0.5"/>
+                    <rect x="180" y="155" width="30" height="50" rx="3" fill="#14B8A6"/>
+                    <rect x="230" y="170" width="30" height="35" rx="3" fill="#0A7EA4" opacity="0.4"/>
+                    
+                    <text x="280" y="195" fill="#64748B" font-size="10">Potential recovery with automation</text>
+                    <path d="M 275 200 L 260 200 L 255 195" stroke="#14B8A6" stroke-width="1.5" fill="none" marker-end="url(#arrowgreen)"/>
+                    
+                    <!-- Upward trend arrow -->
+                    <path d="M 450 185 L 480 165 L 510 175" stroke="#14B8A6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="510" cy="175" r="4" fill="#14B8A6"/>
+                </svg>
+            </div>
+            
+            <div class="calculator">
+                <div class="input-group">
+                    <label for="monthlyLeads">Monthly Leads Received</label>
+                    <input type="number" id="monthlyLeads" placeholder="e.g., 100" value="100">
+                </div>
+                <div class="input-group">
+                    <label for="avgJobValue">Average Job Value (AED)</label>
+                    <input type="number" id="avgJobValue" placeholder="e.g., 500" value="500">
+                </div>
+                <div class="input-group">
+                    <label for="missedPercentage">Current Missed Lead % (estimate)</label>
+                    <input type="number" id="missedPercentage" placeholder="e.g., 30" value="30" min="0" max="100">
+                </div>
+                <div class="results">
+                    <div class="result-item">
+                        <span class="result-label">Missed Leads Per Month:</span>
+                        <span class="result-value" id="missedLeads">30</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Lost Revenue Per Month:</span>
+                        <span class="result-value" id="lostRevenue">AED 15,000</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Potential Recovered Revenue:</span>
+                        <span class="result-value" id="recoveredRevenue">AED 12,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Work With Me -->
+    <section class="why-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Work With Me</h2>
+            </div>
+            <div class="why-content">
+                <div class="profile-placeholder">
+                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background circle -->
+                        <circle cx="100" cy="100" r="90" fill="#0A7EA4" opacity="0.1"/>
+                        
+                        <!-- Head -->
+                        <circle cx="100" cy="75" r="30" fill="#0A7EA4" opacity="0.3"/>
+                        
+                        <!-- Body -->
+                        <path d="M 100 105 Q 70 105 65 130 L 65 160 Q 65 170 75 170 L 125 170 Q 135 170 135 160 L 135 130 Q 130 105 100 105 Z" fill="#0A7EA4" opacity="0.4"/>
+                        
+                        <!-- Laptop -->
+                        <rect x="60" y="120" width="80" height="50" rx="3" fill="#FFFFFF" stroke="#0A7EA4" stroke-width="2"/>
+                        <rect x="65" y="125" width="70" height="35" rx="2" fill="#0A7EA4" opacity="0.2"/>
+                        
+                        <!-- Code lines on screen -->
+                        <line x1="70" y1="132" x2="90" y2="132" stroke="#0A7EA4" stroke-width="2" opacity="0.5"/>
+                        <line x1="70" y1="140" x2="110" y2="140" stroke="#14B8A6" stroke-width="2"/>
+                        <line x1="70" y1="148" x2="95" y2="148" stroke="#0A7EA4" stroke-width="2" opacity="0.5"/>
+                        <line x1="70" y1="155" x2="105" y2="155" stroke="#0A7EA4" stroke-width="2" opacity="0.5"/>
+                        
+                        <!-- Automation symbols -->
+                        <circle cx="160" cy="60" r="15" fill="#14B8A6" opacity="0.2"/>
+                        <path d="M 155 60 L 160 65 L 165 55" stroke="#14B8A6" stroke-width="2" fill="none"/>
+                        
+                        <circle cx="40" cy="140" r="12" fill="#14B8A6" opacity="0.2"/>
+                        <path d="M 32 140 L 35 140 L 35 145 L 40 140 L 45 145 L 45 140 L 48 140" stroke="#14B8A6" stroke-width="1.5" fill="none"/>
+                        
+                        <!-- Network nodes -->
+                        <circle cx="170" cy="130" r="8" fill="#0A7EA4"/>
+                        <circle cx="155" cy="150" r="6" fill="#14B8A6"/>
+                        <circle cx="180" cy="155" r="5" fill="#0A7EA4" opacity="0.5"/>
+                        <line x1="170" y1="138" x2="160" y2="145" stroke="#0A7EA4" stroke-width="1" stroke-dasharray="2,2"/>
+                        <line x1="170" y1="138" x2="177" y2="150" stroke="#0A7EA4" stroke-width="1" stroke-dasharray="2,2"/>
+                        
+                        <!-- Dubai landmark silhouette in background -->
+                        <path d="M 20 180 L 25 160 L 30 180 M 35 180 L 40 150 L 45 180 M 50 180 L 55 165 L 60 180" stroke="#0A7EA4" opacity="0.15" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Bhuvnesh Raghav</h3>
+                    <ul class="why-points">
+                        <li><strong>Specialized in Dubai service businesses</strong> – I understand the unique challenges of home maintenance in the UAE market</li>
+                        <li><strong>Automation focused</strong> – Not just building websites, but complete systems that run your business</li>
+                        <li><strong>Full system approach</strong> – WhatsApp, CRM, scheduling, follow-ups all integrated seamlessly</li>
+                        <li><strong>Scalable workflows</strong> – Systems grow with your business from 1 technician to 20+</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Stop Losing Jobs?</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.95;">Book a free automation audit and discover exactly where you're losing revenue</p>
+            <a href="#contact" class="btn">Schedule Free Automation Audit</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Bhuvnesh Raghav</h3>
+                <p>Automation Consultant</p>
+                <p>Dubai, UAE 🇦🇪</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="https://wa.me/971XXXXXXXXX">WhatsApp: +971 XX XXX XXXX</a>
+                <a href="mailto:bhuvnesh@example.com">bhuvnesh@example.com</a>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#problems">Problems</a>
+                <a href="#solution">Solutions</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#roi">ROI Calculator</a>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <p>WhatsApp Automation</p>
+                <p>CRM Integration</p>
+                <p>Lead Management Systems</p>
+                <p>Business Process Automation</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Bhuvnesh Raghav - Automation Consultant. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.section-header, .problem-card, .solution-item, .step, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ROI Calculator
+        const monthlyLeadsInput = document.getElementById('monthlyLeads');
+        const avgJobValueInput = document.getElementById('avgJobValue');
+        const missedPercentageInput = document.getElementById('missedPercentage');
+
+        function calculateROI() {
+            const monthlyLeads = parseFloat(monthlyLeadsInput.value) || 0;
+            const avgJobValue = parseFloat(avgJobValueInput.value) || 0;
+            const missedPercentage = parseFloat(missedPercentageInput.value) || 0;
+
+            const missedLeads = Math.round(monthlyLeads * (missedPercentage / 100));
+            const lostRevenue = missedLeads * avgJobValue;
+            const recoveredRevenue = Math.round(lostRevenue * 0.8); // Assuming 80% recovery rate
+
+            document.getElementById('missedLeads').textContent = missedLeads;
+            document.getElementById('lostRevenue').textContent = `AED ${lostRevenue.toLocaleString()}`;
+            document.getElementById('recoveredRevenue').textContent = `AED ${recoveredRevenue.toLocaleString()}`;
+        }
+
+        monthlyLeadsInput.addEventListener('input', calculateROI);
+        avgJobValueInput.addEventListener('input', calculateROI);
+        missedPercentageInput.addEventListener('input', calculateROI);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Initial ROI calculation
+        calculateROI();
+    </script>
+
+</body>
+</html>
