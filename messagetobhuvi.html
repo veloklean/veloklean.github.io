@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Send Me a Secret 🤫 | Bhuvnesh Raghav</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ==========================================
+       CSS CUSTOM PROPERTIES
+    ========================================== */
+    :root {
+      --bg: #f0f4ff;
+      --card: rgba(255, 255, 255, 0.72);
+      --card-border: rgba(255, 255, 255, 0.9);
+      --glass: rgba(255, 255, 255, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.8);
+      --text-primary: #1a1a2e;
+      --text-secondary: #4a4a6a;
+      --text-muted: #8888aa;
+      --accent: #7c4dff;
+      --accent2: #ff6b9d;
+      --accent3: #00d4aa;
+      --accent4: #ffb347;
+      --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --gradient-hero: linear-gradient(135deg, #e0e7ff 0%, #fce4ec 50%, #e8f5e9 100%);
+      --shadow-sm: 0 4px 20px rgba(124, 77, 255, 0.08);
+      --shadow-md: 0 8px 40px rgba(124, 77, 255, 0.14);
+      --shadow-lg: 0 20px 60px rgba(124, 77, 255, 0.2);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --radius-xs: 10px;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Nunito', sans-serif;
+      --transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      --transition-fast: all 0.2s ease;
+    }
+
+    /* ==========================================
+       RESET & BASE
+    ========================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ==========================================
+       ANIMATED BACKGROUND
+    ========================================== */
+    .bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: var(--gradient-hero);
+      background-size: 400% 400%;
+      animation: bgShift 12s ease infinite;
+    }
+    @keyframes bgShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ==========================================
+       FLOATING PARTICLES
+    ========================================== */
+    .particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.18;
+      animation: floatUp linear infinite;
+    }
+    .particle:nth-child(1)  { width: 80px; height: 80px; left: 5%;  background: radial-gradient(circle, #7c4dff, #b39ddb); animation-duration: 18s; animation-delay: 0s; }
+    .particle:nth-child(2)  { width: 50px; height: 50px; left: 15%; background: radial-gradient(circle, #ff6b9d, #f8bbd0); animation-duration: 22s; animation-delay: -4s; }
+    .particle:nth-child(3)  { width: 120px; height: 120px; left: 30%; background: radial-gradient(circle, #4facfe, #b3e5fc); animation-duration: 26s; animation-delay: -8s; }
+    .particle:nth-child(4)  { width: 60px;  height: 60px;  left: 50%; background: radial-gradient(circle, #00d4aa, #b2dfdb); animation-duration: 20s; animation-delay: -2s; }
+    .particle:nth-child(5)  { width: 90px;  height: 90px;  left: 65%; background: radial-gradient(circle, #ffb347, #ffe0b2); animation-duration: 24s; animation-delay: -6s; }
+    .particle:nth-child(6)  { width: 40px;  height: 40px;  left: 80%; background: radial-gradient(circle, #f093fb, #fce4ec); animation-duration: 19s; animation-delay: -12s; }
+    .particle:nth-child(7)  { width: 70px;  height: 70px;  left: 90%; background: radial-gradient(circle, #7c4dff, #e8eaf6); animation-duration: 28s; animation-delay: -3s; }
+    .particle:nth-child(8)  { width: 100px; height: 100px; left: 40%; background: radial-gradient(circle, #ff6b9d, #fce4ec); animation-duration: 15s; animation-delay: -10s; }
+    @keyframes floatUp {
+      0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.18; }
+      90%  { opacity: 0.18; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Decorative blobs */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.25;
+      z-index: 1;
+      animation: blobPulse 8s ease-in-out infinite alternate;
+    }
+    .blob-1 { width: 400px; height: 400px; background: #b39ddb; top: -100px; left: -100px; animation-delay: 0s; }
+    .blob-2 { width: 300px; height: 300px; background: #f8bbd0; bottom: 10%; right: -50px; animation-delay: -3s; }
+    .blob-3 { width: 250px; height: 250px; background: #b3e5fc; top: 40%; left: 60%; animation-delay: -6s; }
+    @keyframes blobPulse {
+      0%   { transform: scale(1) translate(0,0); }
+      100% { transform: scale(1.25) translate(30px, -30px); }
+    }
+
+    /* ==========================================
+       LAYOUT WRAPPER
+    ========================================== */
+    .wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    /* ==========================================
+       GLASS CARD MIXIN
+    ========================================== */
+    .glass {
+      background: var(--card);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1.5px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ==========================================
+       NAV
+    ========================================== */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0 10px;
+      opacity: 0;
+      animation: fadeDown 0.7s 0.1s ease forwards;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+    .nav-badge {
+      background: var(--glass);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-badge span { animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* ==========================================
+       HERO SECTION
+    ========================================== */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.25s ease forwards;
+    }
+    .hero-emoji-ring {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      height: 90px;
+      background: var(--glass);
+      border: 2px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      font-size: 2.4rem;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 32px rgba(124,77,255,0.15), inset 0 2px 8px rgba(255,255,255,0.6);
+      animation: wobble 4s ease-in-out infinite;
+    }
+    @keyframes wobble {
+      0%,100%{transform:rotate(-5deg) scale(1);}
+      25%{transform:rotate(5deg) scale(1.05);}
+      75%{transform:rotate(-3deg) scale(0.97);}
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #1a1a2e 0%, #7c4dff 50%, #ff6b9d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: var(--text-secondary);
+      font-weight: 500;
+      max-width: 520px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .tag {
+      background: var(--glass);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(8px);
+      border-radius: 30px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .tag:hover { transform: translateY(-3px) scale(1.06); box-shadow: var(--shadow-sm); }
+    .tag.purple { color: var(--accent); border-color: rgba(124,77,255,0.3); background: rgba(124,77,255,0.07); }
+    .tag.pink   { color: var(--accent2); border-color: rgba(255,107,157,0.3); background: rgba(255,107,157,0.07); }
+    .tag.teal   { color: var(--accent3); border-color: rgba(0,212,170,0.3); background: rgba(0,212,170,0.07); }
+
+    /* ==========================================
+       FUNNY TICKER
+    ========================================== */
+    .ticker-wrap {
+      overflow: hidden;
+      background: var(--glass);
+      border: 1.5px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      padding: 10px 0;
+      margin: 8px 0 40px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s ease forwards;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 80px;
+      width: max-content;
+      animation: ticker 25s linear infinite;
+    }
+    .ticker-item {
+      white-space: nowrap;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ==========================================
+       MESSAGE FORM SECTION
+    ========================================== */
+    .form-section {
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s ease forwards;
+    }
+    .form-card {
+      padding: 40px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3), var(--accent4));
+      background-size: 300%;
+      animation: rainbowBorder 4s linear infinite;
+    }
+    @keyframes rainbowBorder { 0%{background-position:0%} 100%{background-position:300%} }
+
+    .form-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .form-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, #7c4dff22, #7c4dff44);
+      border: 1.5px solid rgba(124,77,255,0.25);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .form-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .form-header p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .textarea-wrap { position: relative; margin-bottom: 20px; }
+    .secret-textarea {
+      width: 100%;
+      min-height: 160px;
+      padding: 18px 20px;
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.65);
+      border: 2px solid rgba(124,77,255,0.15);
+      border-radius: var(--radius-sm);
+      resize: vertical;
+      outline: none;
+      transition: var(--transition-fast);
+      line-height: 1.6;
+    }
+    .secret-textarea::placeholder { color: var(--text-muted); }
+    .secret-textarea:focus {
+      border-color: rgba(124,77,255,0.5);
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 0 0 4px rgba(124,77,255,0.1);
+    }
+    .char-counter {
+      position: absolute;
+      bottom: 12px; right: 14px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      pointer-events: none;
+      transition: var(--transition-fast);
+    }
+    .char-counter.warn { color: var(--accent4); }
+    .char-counter.limit { color: var(--accent2); }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .anon-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .anon-dot {
+      width: 8px; height: 8px;
+      background: var(--accent3);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    /* SEND BUTTON */
+    .btn-send {
+      position: relative;
+      overflow: hidden;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, #7c4dff, #b55cff);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      box-shadow: 0 8px 24px rgba(124,77,255,0.35);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .btn-send:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 14px 36px rgba(124,77,255,0.45);
+    }
+    .btn-send:active { transform: scale(0.97); }
+    .btn-send .btn-icon { font-size: 1.1rem; transition: transform 0.3s ease; }
+    .btn-send:hover .btn-icon { transform: rotate(20deg) scale(1.2); }
+
+    /* Ripple */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      transform: scale(0);
+      animation: rippleAnim 0.6s linear;
+      pointer-events: none;
+    }
+    @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+    /* Loading spinner inside button */
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ==========================================
+       SUCCESS OVERLAY
+    ========================================== */
+    .success-overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      z-index: 10;
+      animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    .success-overlay.visible { display: flex; }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .success-emoji {
+      font-size: 3.5rem;
+      animation: bounceLoop 1s ease-in-out infinite alternate;
+    }
+    @keyframes bounceLoop { from{transform:translateY(0)} to{transform:translateY(-10px)} }
+    .success-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .success-sub { font-size: 0.9rem; color: var(--text-secondary); font-weight: 600; text-align: center; max-width: 280px; }
+    .success-reactions { display: flex; gap: 12px; font-size: 1.8rem; animation: slideUp 0.5s 0.3s ease both; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:translateY(0)} }
+    .btn-reset {
+      margin-top: 8px;
+      padding: 10px 28px;
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.88rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .btn-reset:hover { background: var(--accent); color: #fff; }
+
+    /* ==========================================
+       FUNNY NOTES SECTION
+    ========================================== */
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px; height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 28px;
+    }
+
+    .funny-section { margin-bottom: 40px; }
+    .funny-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .funny-card {
+      padding: 22px 20px;
+      border-radius: var(--radius-sm);
+      background: var(--card);
+      border: 1.5px solid var(--card-border);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      cursor: default;
+    }
+    .funny-card:hover { transform: translateY(-6px) rotate(1deg); box-shadow: var(--shadow-md); }
+    .funny-card:nth-child(even):hover { transform: translateY(-6px) rotate(-1deg); }
+    .funny-card .fc-emoji { font-size: 1.8rem; margin-bottom: 10px; display: block; }
+    .funny-card p { font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); line-height: 1.55; }
+    .funny-card.pink-tint  { background: rgba(255,107,157,0.07); border-color: rgba(255,107,157,0.25); }
+    .funny-card.purple-tint { background: rgba(124,77,255,0.07); border-color: rgba(124,77,255,0.25); }
+    .funny-card.teal-tint  { background: rgba(0,212,170,0.07); border-color: rgba(0,212,170,0.25); }
+    .funny-card.yellow-tint { background: rgba(255,179,71,0.07); border-color: rgba(255,179,71,0.25); }
+
+    /* ==========================================
+       HOW IT WORKS
+    ========================================== */
+    .how-section { margin-bottom: 40px; }
+    .steps-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .step-card {
+      padding: 26px 22px;
+      border-radius: var(--radius-sm);
+      background: var(--card);
+      border: 1.5px solid var(--card-border);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .step-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .step-num {
+      position: absolute;
+      top: -8px; right: 12px;
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 900;
+      color: rgba(124,77,255,0.07);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .step-icon { font-size: 1.6rem; margin-bottom: 12px; display: block; }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .step-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; font-weight: 500; }
+
+    /* ==========================================
+       EXTRA FUNNY BANNER
+    ========================================== */
+    .meme-banner {
+      background: linear-gradient(135deg, rgba(124,77,255,0.1), rgba(255,107,157,0.1));
+      border: 1.5px solid rgba(124,77,255,0.2);
+      border-radius: var(--radius);
+      padding: 30px 36px;
+      text-align: center;
+      margin-bottom: 40px;
+      backdrop-filter: blur(12px);
+      transition: var(--transition);
+    }
+    .meme-banner:hover { transform: scale(1.01); }
+    .meme-banner .mb-emoji { font-size: 2rem; display: block; margin-bottom: 10px; }
+    .meme-banner p {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+    .meme-banner small { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; display: block; margin-top: 8px; }
+
+    /* ==========================================
+       DISCLAIMER
+    ========================================== */
+    .disclaimer {
+      background: rgba(255,255,255,0.5);
+      border: 1.5px solid rgba(124,77,255,0.15);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-xs);
+      padding: 18px 22px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(8px);
+    }
+    .disclaimer strong { font-family: var(--font-display); font-size: 0.8rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+    .disclaimer p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; margin-top: 6px; font-weight: 500; }
+
+    /* ==========================================
+       FOOTER
+    ========================================== */
+    footer {
+      text-align: center;
+      padding: 30px 0 10px;
+      border-top: 1.5px solid rgba(124,77,255,0.12);
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    footer p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      line-height: 1.8;
+    }
+    footer .heart { color: var(--accent2); animation: heartBeat 1.2s ease-in-out infinite; display: inline-block; }
+    @keyframes heartBeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+
+    /* ==========================================
+       SCROLL REVEAL
+    ========================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34, 1.3, 0.64, 1);
+    }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+    /* ==========================================
+       KEYFRAMES UTILITIES
+    ========================================== */
+    @keyframes fadeUp   { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ==========================================
+       RESPONSIVE
+    ========================================== */
+    @media (max-width: 640px) {
+      .form-card { padding: 28px 22px; }
+      .form-footer { flex-direction: column; align-items: stretch; }
+      .btn-send { width: 100%; justify-content: center; }
+      .meme-banner { padding: 22px 20px; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 40px 10px 28px; }
+      .funny-grid, .steps-list { grid-template-columns: 1fr; }
+    }
+
+    /* ==========================================
+       CUSTOM CURSOR GLOW (desktop)
+    ========================================== */
+    .cursor-glow {
+      position: fixed;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,77,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: opacity 0.3s;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--text-primary);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 50px;
+      box-shadow: var(--shadow-lg);
+      z-index: 9998;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s;
+      opacity: 0;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="bg-canvas"></div>
+  <div class="particles">
+    <div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div>
+  </div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="toast" id="toast">📋 Copied to clipboard!</div>
+
+  <div class="wrapper">
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-logo">🔐 SecretDrop</div>
+      <div class="nav-badge"><span>●</span> 100% Anonymous</div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-emoji-ring">🤫</div>
+      <h1>Send Me a Secret<br />Message</h1>
+      <p>Say anything… I won't know who you are.<br /><em>(Unless you're the FBI 😅) ~ Made with ♥ by Bhuvi</em></p>
+      <div class="hero-tags">
+        <span class="tag purple">🕵️ Anonymous</span>
+        <span class="tag pink">💌 Direct to Me</span>
+        <span class="tag teal">⚡ Instant Delivery</span>
+        <span class="tag">✨ No Login Needed</span>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker-wrap">
+      <div class="ticker-track" id="ticker">
+        <span class="ticker-item">🍍 Your secret is safe here… unless it's about pineapple on pizza</span>
+        <span class="ticker-item">😆 Relax, I won't judge… much</span>
+        <span class="ticker-item">🫣 अगर crush का नाम लिख रहे हो तो spelling सही लिखना</span>
+        <span class="ticker-item">🔍 More secret than your Google search history</span>
+        <span class="ticker-item">💀 !Main nahi bolunga… </span>
+        <span class="ticker-item">🌚 kisi ne gali di to usko TL pr reply diya jayega </span>
+        <span class="ticker-item">🍍 Your secret is safe here… unless it's about pineapple on pizza</span>
+        <span class="ticker-item">😆 Relax, I won't judge… much</span>
+        <span class="ticker-item">🫣 अगर crush का नाम लिख रहे हो तो spelling सही लिखना</span>
+        <span class="ticker-item">🔍 More secret than your Google search history</span>
+        <span class="ticker-item">💀 Main nahi bolunga… wese bta bhi dia to ke ghanta karoge mka</span>
+        <span class="ticker-item">🌚 faltu me kisi mai backchodi ki to raat ko bhoot aayenge uske sapne mai</span>
+      </div>
+    </div>
+
+    <!-- MESSAGE FORM -->
+    <section class="form-section">
+      <div class="glass form-card" id="formCard">
+
+        <!-- SUCCESS OVERLAY -->
+        <div class="success-overlay" id="successOverlay">
+          <div class="success-emoji" id="successEmoji">🎉</div>
+          <div class="success-title">Message Sent! 🔐</div>
+          <div class="success-sub">Your secret is flying through the internet… anonymously. Mission accomplished!</div>
+          <div class="success-reactions">🤫 💌 ✨ 🕵️</div>
+          <button class="btn-reset" id="btnReset">Send Another Secret</button>
+        </div>
+
+        <div class="form-header">
+          <div class="form-icon">💬</div>
+          <div>
+            <h2>Drop Your Secret</h2>
+            <p>No name needed. No account. Just vibes. ✨</p>
+          </div>
+        </div>
+
+        <div class="textarea-wrap">
+          <textarea
+            class="secret-textarea"
+            id="secretMsg"
+            maxlength="500"
+            placeholder="Type your secret here… 🤫&#10;&#10;P.S. — अगर apni crush ke bare mai likh rahe ho to uski id mention kr dena yaha aagr tum ladki ho to aapni id likh dena  💌"
+          ></textarea>
+          <div class="char-counter" id="charCounter">0 / 500</div>
+        </div>
+
+        <div class="form-footer">
+          <div class="anon-note">
+            <div class="anon-dot"></div>
+            Fully anonymous &amp; encrypted in transit
+          </div>
+          <button class="btn-send" id="btnSend">
+            <span class="btn-icon">📨</span>
+            <span id="btnText">Send Secret Message</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FUNNY NOTES -->
+    <section class="funny-section reveal">
+      <div class="section-label">😂 Just so you know</div>
+      <div class="section-title">House Rules of Secrets 📜</div>
+      <div class="funny-grid">
+        <div class="funny-card pink-tint">
+          <span class="fc-emoji">🍍</span>
+          <p>Your secret is safe here… unless it's about pineapple on pizza. That gets screenshotted and sent to everyone.</p>
+        </div>
+        <div class="funny-card purple-tint">
+          <span class="fc-emoji">🫣</span>
+          <p>अगर crush का नाम लिख रहे हो — spelling सही लिखना। Galti se kuch aur mat likh dena 😜</p>
+        </div>
+        <div class="funny-card teal-tint">
+          <span class="fc-emoji">🔍</span>
+          <p>This message is more secret than your Google search history. And that's saying something. 👀</p>
+        </div>
+        <div class="funny-card yellow-tint">
+          <span class="fc-emoji">😆</span>
+          <p>Relax, I won't judge… much. Okay maybe a little. Okay a LOT. But in a loving way. 🥺</p>
+        </div>
+        <div class="funny-card purple-tint">
+          <span class="fc-emoji">💀</span>
+          <p>Main nahi bolunga… pinky promise. (Fingers behind my back 🤞 Ahem.)</p>
+        </div>
+        <div class="funny-card pink-tint">
+          <span class="fc-emoji">🌚</span>
+          <p>Yeh message padh ke main 3am ko existential crisis mein jaaunga. Worth it. 🫡</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEME BANNER -->
+    <div class="meme-banner reveal">
+      <span class="mb-emoji">🕵️‍♂️</span>
+      <p>"Anonymously yours" sounds like a Bollywood movie title<br />and I'm 100% here for it.</p>
+      <small>— Probably Bhuvnesh, 2024 😌</small>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section reveal">
+      <div class="section-label">⚙️ The Process</div>
+      <div class="section-title">How This Magic Works 🪄</div>
+      <div class="steps-list">
+        <div class="step-card">
+          <span class="step-num">1</span>
+          <span class="step-icon">✍️</span>
+          <div class="step-title">Write It Down</div>
+          <p class="step-desc">Type anything — a secret, feedback, a compliment, or your deepest fear about Mondays.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">2</span>
+          <span class="step-icon">🚀</span>
+          <div class="step-title">Hit Send</div>
+          <p class="step-desc">One click and your message disappears into the encrypted internet void. Poof!</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">3</span>
+          <span class="step-icon">📊</span>
+          <div class="step-title">Lands Safely</div>
+          <p class="step-desc">Reaches my private dashboard with zero trace of you. You ghost-mailed me. Iconic.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">4</span>
+          <span class="step-icon">🤫</span>
+          <div class="step-title">Forever Secret</div>
+          <p class="step-desc">I read it alone. In the dark. With popcorn. Zero judgement. (Okay maybe popcorn.)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer reveal">
+      <strong>🔒 Privacy Disclaimer</strong>
+      <p>To prevent spam and abuse, we may store certain technical information such as your IP address, browser details, and device type when you submit a message. Your data will remain 100% private and secure and will never be shared publicly. By sending a message, you agree to this data collection policy. Yeh toh just formality hai — tension na lo thare data ko bechne bhi lagu to koi kharidega nhi, tension lene se kharche ke parche hi bharoge tum aapne  😄</p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="reveal">
+      <div class="footer-logo">SecretDrop 🔐</div>
+      <p>Designed &amp; Developed with <span class="heart">♥</span> by <strong>Bhuvnesh Raghav</strong></p>
+      <p style="margin-top:4px;">Your secrets are safe. Your spelling mistakes, however… 👀</p>
+    </footer>
+
+  </div>
+
+  <!-- ==========================================
+       JAVASCRIPT
+  ========================================== -->
+  <script>
+    /* ---- CONFIG ---- */
+    // 🔧 Replace this with your actual Google Sheets Apps Script Web App URL
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzEcqMWH9OUyHNdKwxBLFczYJYKztVqqvfRuJfcjOCF7Ji07UqxCwzbbmy1gcnr-lKW1w/exec';
+
+    /* ---- CURSOR GLOW ---- */
+    const cursorGlow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', e => {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    });
+
+    /* ---- SCROLL REVEAL ---- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ---- CHAR COUNTER ---- */
+    const textarea = document.getElementById('secretMsg');
+    const charCounter = document.getElementById('charCounter');
+    textarea.addEventListener('input', () => {
+      const len = textarea.value.length;
+      charCounter.textContent = `${len} / 500`;
+      charCounter.className = 'char-counter';
+      if (len > 400) charCounter.classList.add('warn');
+      if (len >= 490) charCounter.classList.add('limit');
+    });
+
+    /* ---- BUTTON RIPPLE ---- */
+    function addRipple(btn, e) {
+      const ripple = document.createElement('span');
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      ripple.className = 'ripple';
+      ripple.style.cssText = `
+        width: ${size}px; height: ${size}px;
+        left: ${e.clientX - rect.left - size/2}px;
+        top: ${e.clientY - rect.top - size/2}px;
+      `;
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+    }
+
+    /* ---- TOAST ---- */
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    /* ---- OPTIONAL CLICK SOUND ---- */
+    function playClick() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.type = 'sine'; osc.frequency.value = 520;
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+        osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.25);
+      } catch(e) { /* Audio not supported */ }
+    }
+
+    /* ---- GET DEVICE TYPE ---- */
+    function getDeviceType() {
+      const ua = navigator.userAgent.toLowerCase();
+      if (/mobile|iphone|android|phone/.test(ua)) return 'Mobile';
+      if (/tablet|ipad/.test(ua)) return 'Tablet';
+      return 'Desktop';
+    }
+
+    /* ---- SEND MESSAGE ---- */
+    const btnSend = document.getElementById('btnSend');
+    const btnText = document.getElementById('btnText');
+    const successOverlay = document.getElementById('successOverlay');
+    const successEmoji = document.getElementById('successEmoji');
+
+    const emojis = ['🎉','🤫','💌','🕵️','✨','🔐','🥳','😎'];
+
+    btnSend.addEventListener('click', async function(e) {
+      addRipple(this, e);
+      playClick();
+
+      const message = textarea.value.trim();
+      if (!message) {
+        textarea.style.borderColor = 'rgba(255,107,157,0.7)';
+        textarea.style.boxShadow = '0 0 0 4px rgba(255,107,157,0.15)';
+        showToast('🤫 Bhai kuch toh likho! Empty message nahi chalega.');
+        setTimeout(() => {
+          textarea.style.borderColor = '';
+          textarea.style.boxShadow = '';
+        }, 1500);
+        return;
+      }
+
+      /* Show loading state */
+      btnSend.disabled = true;
+      btnText.innerHTML = '';
+      const spinner = document.createElement('div');
+      spinner.className = 'spinner';
+      btnSend.appendChild(spinner);
+
+      /* Collect metadata */
+      let userIP = 'Unknown';
+      try {
+        const ipRes = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipRes.json();
+        userIP = ipData.ip;
+      } catch(err) { /* IP fetch failed, continue */ }
+
+      const payload = {
+        message,
+        ip: userIP,
+        userAgent: navigator.userAgent,
+        device: getDeviceType(),
+        timestamp: new Date().toISOString(),
+        language: navigator.language || 'Unknown',
+        screenSize: `${window.screen.width}x${window.screen.height}`
+      };
+
+      /* Send to Google Sheets */
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Google Apps Script requires no-cors
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch(err) {
+        /* no-cors mode throws on fetch but data is still sent */
+      }
+
+      /* Show success */
+      spinner.remove();
+      btnSend.disabled = false;
+      btnText.textContent = 'Send Secret Message';
+
+      successEmoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      successOverlay.classList.add('visible');
+      playClick();
+    });
+
+    /* ---- RESET ---- */
+    document.getElementById('btnReset').addEventListener('click', () => {
+      successOverlay.classList.remove('visible');
+      textarea.value = '';
+      charCounter.textContent = '0 / 500';
+      charCounter.className = 'char-counter';
+    });
+
+    /* ---- FLOATING TEXTAREA HINT on Focus ---- */
+    textarea.addEventListener('focus', () => {
+      textarea.parentElement.style.transform = 'scale(1.01)';
+    });
+    textarea.addEventListener('blur', () => {
+      textarea.parentElement.style.transform = '';
+    });
+
+    /* ---- EASTER EGG: Konami Code ---- */
+    const konamiCode = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let konamiPos = 0;
+    document.addEventListener('keydown', e => {
+      if (e.key === konamiCode[konamiPos]) {
+        konamiPos++;
+        if (konamiPos === konamiCode.length) {
+          showToast('🎮 Konami Code! You unlocked… nothing. But respect. 🫡');
+          konamiPos = 0;
+          document.body.style.animation = 'bgShift 0.5s ease';
+          setTimeout(() => document.body.style.animation = '', 1000);
+        }
+      } else { konamiPos = 0; }
+    });
+
+    
+  </script>
+</body>
+</html>
